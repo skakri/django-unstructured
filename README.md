@@ -4,7 +4,7 @@ django-wiki-base
 Background
 ----------
 
-Django-wiki-base is a lightwight, stripped down version of [django-wiki](https://github.com/benjaoming/django-wiki), it only contains structure models (to be easily included in existing project via API).
+Django-wiki-base is a lightweight, stripped down version of [django-wiki](https://github.com/benjaoming/django-wiki), it only contains structure models (to be easily included in existing project via API).
 
 Current goals
 -------------
