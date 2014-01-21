@@ -83,12 +83,7 @@ Install
 
 To install the latest stable release:
 
-``pip install wiki``
-
-Install directly from Github (in case you have no worries about
-deploying our master branch directly):
-
-``pip install git+git://github.com/benjaoming/django-wiki.git``
+``pip install git+git://github.com/skakri/django-wiki-base.git``
 
 Configure ``settings.INSTALLED_APPS``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -100,7 +95,6 @@ maintain the order due to database relational constraints:
 
         'django.contrib.humanize',
         'south',
-        'django_notify',
         'mptt',
         'sekizai',
         'sorl.thumbnail',
@@ -120,49 +114,3 @@ To sync and create tables, do:
     python manage.py syncdb
     python manage.py migrate
 
-Configure ``TEMPLATE_CONTEXT_PROCESSORS``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Add ``'sekizai.context_processors.sekizai'`` and
-``'django.core.context_processors.debug'`` to
-``settings.TEMPLATE_CONTEXT_PROCESSORS``. Please refer to the `Django
-docs <https://docs.djangoproject.com/en/dev/ref/settings/#template-context-processors>`_
-to see the current default setting for this variable.
-
-In Django 1.5, it should look like this:
-
-::
-
-    TEMPLATE_CONTEXT_PROCESSORS = (
-        "django.contrib.auth.context_processors.auth",
-        "django.core.context_processors.debug",
-        "django.core.context_processors.i18n",
-        "django.core.context_processors.media",
-        "django.core.context_processors.request",
-        "django.core.context_processors.static",
-        "django.core.context_processors.tz",
-        "django.contrib.messages.context_processors.messages",
-        "sekizai.context_processors.sekizai",
-    )
-
-Include urlpatterns
-~~~~~~~~~~~~~~~~~~~
-
-To integrate the wiki to your existing application, you shoud add the
-following lines at the end of your project's ``urls.py``.
-
-::
-
-    from wiki.urls import get_pattern as get_wiki_pattern
-    from django_notify.urls import get_pattern as get_notify_pattern
-    urlpatterns += patterns('',
-        (r'^notify/', get_notify_pattern()),
-        (r'', get_wiki_pattern())
-    )
-
-Please use these function calls rather than writing your own include()
-call - the url namespaces aren't supposed to be customized.
-
-The above line puts the wiki in */* so it's important to put it at the
-end of your urlconf. You can also put it in */wiki* by putting
-``'^wiki/'`` as the pattern.

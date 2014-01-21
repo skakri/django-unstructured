@@ -12,10 +12,9 @@ Test settings
 Setup
 -----
 
-You should link your wiki and django_notify folders like so
+You should link your wiki folder like so
 
     ln -s ../wiki .
-    ln -s ../django_notify .
 
 Running
 -------
