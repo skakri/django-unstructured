@@ -4,7 +4,7 @@ Installation
 Pre-requisites
 --------------
 
-For image processing, django-wiki uses the `Pillow
+For image processing, wiki-base uses the `Pillow
 library <https://github.com/python-imaging/Pillow>`_ (a fork of PIL).
 The preferred method should be to get a system-wide, pre-compiled
 version of Pillow, for instance by getting the binaries from your Linux
@@ -17,7 +17,7 @@ You may find this a bit annoying: On Ubuntu 12.04 and Debian, PIL is
 satisfied by installing ``python-imaging``, however Pillow is not! On
 later versions of Ubuntu (tested on 13.10), Pillow is satisfied, but PIL
 is not. But since PIL no longer compiles on later releases of Ubuntu, we
-have opted to use Pillow. The alternative would be that django-wiki's
+have opted to use Pillow. The alternative would be that wiki-base's
 requirements would be installed and silently fail (i.e. PIL from pip
 compiles on Ubuntu 13+ but finds no system libraries for image
 processing).
@@ -82,7 +82,9 @@ Install
 -------
 
 To install the latest stable release:
+``pip install wiki-base``
 
+Or alternatively you can grab latest from source:
 ``pip install git+git://github.com/skakri/django-wiki-base.git``
 
 Configure ``settings.INSTALLED_APPS``
