@@ -24,6 +24,15 @@ class Article(models.Model):
                                             blank=True, null=True, related_name='current_set',
                                             help_text=_(u'The revision being displayed for this article. If you need to do a roll-back, simply change the value of this field.'),
                                             )
+
+    deleted = models.BooleanField(
+        verbose_name=_(u'deleted'),
+        default=False,
+    )
+    locked  = models.BooleanField(
+        verbose_name=_(u'locked'),
+        default=False,
+    )
     
     created = models.DateTimeField(auto_now_add=True, verbose_name=_(u'created'),)
     modified = models.DateTimeField(auto_now=True, verbose_name=_(u'modified'),
@@ -225,18 +234,6 @@ class BaseRevisionMixin(models.Model):
         'self', blank=True, null=True, on_delete=models.SET_NULL
     )
     
-    # NOTE! The semantics of these fields are not related to the revision itself
-    # but the actual related object. If the latest revision says "deleted=True" then
-    # the related object should be regarded as deleted.
-    deleted = models.BooleanField(
-        verbose_name=_(u'deleted'),
-        default=False,
-    )
-    locked  = models.BooleanField(
-        verbose_name=_(u'locked'),
-        default=False,
-    )
-
     def set_from_request(self, request):
         if request.user.is_authenticated():
             self.user = request.user
@@ -283,9 +280,7 @@ class ArticleRevision(BaseRevisionMixin, models.Model):
         self.article = predecessor.article
         self.content = predecessor.content
         self.title = predecessor.title
-        self.deleted = predecessor.deleted
-        self.locked = predecessor.locked
-    
+
     def save(self, *args, **kwargs):
         if (not self.id and
             not self.previous_revision and 

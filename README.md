@@ -11,8 +11,12 @@ Current goals
 
 * Strip all unneeded stuff - views, etc.
 * Transform Article to use "block system" (think MediaWiki) from which article menu could be created
-* Add Article `deleted` flag
 * Markdown optional (there isn't any useable WYSIWYG Markdown editor)
+
+Changes from django-wiki
+------------------------
+
+* Moved ArticleRevision `deleted` and `locked` flags to Article
 
 Contributing
 ------------
@@ -26,7 +30,7 @@ So far the dependencies are:
 
  * [django>=1.4](http://www.djangoproject.com)
  * [django-south](http://south.aeracode.org/)
- * [Markdown>=2.2.0](https://github.com/waylan/Python-Markdown) (to be removed)
+ * [Markdown>=2.2.0](https://github.com/waylan/Python-Markdown)
  * [django-mptt>=0.5.3](https://github.com/django-mptt/django-mptt)
  * [django-sekizai](https://github.com/ojii/django-sekizai/)
  * [sorl-thumbnail](https://github.com/sorl/sorl-thumbnail) (to be removed?)
