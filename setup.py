@@ -28,12 +28,12 @@ except (IOError, ImportError):
     long_description = ""
 
 setup(
-    name = "wiki",
+    name = "wiki-base",
     version = VERSION,
-    author = "Benjamin Bach",
-    author_email = "benjamin@overtag.dk",
-    url = "http://www.django-wiki.org",
-    description = "A wiki system written for the Django framework.",
+    author = "Kristaps Karlsons",
+    author_email = "kristaps.karlsons@gmail.com",
+    url = "http://github.com/skakri/django-wiki-base",
+    description = "A collection of wiki-like Django modules for integration with APIs. Based on wiki package.",
     license = "GPLv3",
     keywords = "django wiki markdown",
     packages=find_packages(exclude=["testproject","testproject.*"]),

@@ -14,7 +14,6 @@ register = template.Library()
 
 from wiki.conf import settings
 from wiki import models
-from wiki.core.plugins import registry as plugin_registry
 
 # Cache for looking up objects for articles... article_for_object is
 # called more than once per page in multiple template blocks.
@@ -39,32 +38,6 @@ def article_for_object(context, obj):
             article = None
         _cache[obj] = article
     return _cache[obj]
-
-
-@register.inclusion_tag('wiki/includes/render.html', takes_context=True)
-def wiki_render(context, article, preview_content=None):
-    
-    if preview_content:
-        content = article.render(preview_content=preview_content)
-    else:
-        content = None
-    context.update({
-        'article': article,
-        'content': content,
-        'preview': not preview_content is None,
-        'plugins': plugin_registry.get_plugins(),
-        'STATIC_URL': django_settings.STATIC_URL,
-        'CACHE_TIMEOUT': settings.CACHE_TIMEOUT,
-    })
-    return context
-
-
-@register.inclusion_tag('wiki/includes/form.html', takes_context=True)
-def wiki_form(context, form_obj):
-    if not isinstance(form_obj, BaseForm):
-        raise TypeError("Error including form, it's not a form, it's a %s" % type(form_obj))
-    context.update({'form': form_obj})
-    return context
 
 
 @register.filter

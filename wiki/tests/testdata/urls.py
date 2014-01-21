@@ -17,8 +17,3 @@ if settings.DEBUG:
             'document_root': settings.MEDIA_ROOT,
         }),
    )
-    
-from wiki.urls import get_pattern as get_wiki_pattern
-urlpatterns += patterns('',
-    (r'', get_wiki_pattern())
-)

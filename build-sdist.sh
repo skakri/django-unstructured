@@ -11,12 +11,9 @@ echo "Creating CHANGELOG.md"
 echo "Latest Changes" > $CHANGELOG
 echo "==============" >> $CHANGELOG
 echo "Compiled on: `date`" >> $CHANGELOG
-echo "\nThis file is auto-generated upon every new release. To review the latest commits in the master branch, please refer to: https://github.com/benjaoming/django-wiki/commits/master"
+echo "\nThis file is auto-generated upon every new release. To review the latest commits in the master branch, please refer to: https://github.com/skakri/django-wiki-base/commits/master"
 echo "" >> $CHANGELOG
 git log --graph --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit | sed "s/^/    /" >> $CHANGELOG
-
-echo "Compiling LESS files to CSS..."
-./build-less.sh
 
 echo "Building docs..."
 cd docs

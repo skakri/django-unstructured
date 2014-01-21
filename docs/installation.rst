@@ -100,7 +100,6 @@ maintain the order due to database relational constraints:
         'sorl.thumbnail',
         'wiki',
         'wiki.plugins.attachments',
-        'wiki.plugins.notifications',
         'wiki.plugins.images',
         'wiki.plugins.macros',
 

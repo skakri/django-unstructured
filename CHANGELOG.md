@@ -1,52 +1,65 @@
 Latest Changes
 ==============
-Compiled on: Mon Jan  6 23:50:32 CET 2014
+Compiled on: O  jan 21 11:39:03 EET 2014
 
-    * 2eaf23e - (HEAD, tag: alpha/0.0.23, origin/master, origin/HEAD, master) Bump to 0.0.23 (5 minutes ago) <benjaoming>
-    * 57e9bcf - Fix #221 - not correctly inheriting some permissions, save() called on URLPath object instead of Article object! (12 minutes ago) <benjaoming>
-    *   489f2c5 - Merge pull request #220 from Russell-Jones/master (7 days ago) <benjaoming>
+    * 437f852 - (HEAD, origin/cleanup, cleanup) Fixed tipo (61 minutes ago) <Kristaps Karlsons>
+    * 8dcd4cf - Moved ArticleRevision `deleted` and `locked` flags to Article. (63 minutes ago) <Kristaps Karlsons>
+    * 980022b - Removed static files and templates. (85 minutes ago) <Kristaps Karlsons>
+    * 0621a6e - Updated docs and settings. (3 hours ago) <Kristaps Karlsons>
+    * 937b39c - Removed django_notify dependency and `notifications` plugin. It'll be possible to hook in to signals. (3 hours ago) <Kristaps Karlsons>
+    * 3001d1d - (origin/master, origin/HEAD, master) Updated README.md to reflect django-wiki-base goals (18 hours ago) <Kristaps Karlsons>
+    * 53807f5 - add rtd conf env (12 days ago) <benjaoming>
+    *   ecd2dec - Merge pull request #227 from spookylukey/easy_branding (12 days ago) <benjaoming>
     |\  
-    | * d36dbed - Add try catch block to test for and use if available new in 1.6 db transaction API (7 days ago) <Russell Jones>
+    | * 051ca6e - Corrected docs for easy branding method (12 days ago) <Luke Plant>
+    | * d1ea57b - Added easy way to brand the wiki, avoiding lots of copy and paste. (12 days ago) <Luke Plant>
+    | * 3b7420e - Beginnings of docs - converted from README (12 days ago) <Luke Plant>
     |/  
-    *   9931ffd - Merge pull request #217 from tominardi/master (3 weeks ago) <benjaoming>
+    * 2eaf23e - (tag: alpha/0.0.23) Bump to 0.0.23 (2 weeks ago) <benjaoming>
+    * 57e9bcf - Fix #221 - not correctly inheriting some permissions, save() called on URLPath object instead of Article object! (2 weeks ago) <benjaoming>
+    *   489f2c5 - Merge pull request #220 from Russell-Jones/master (3 weeks ago) <benjaoming>
     |\  
-    | * 59a5614 - Edit french translations (3 weeks ago) <tominardi>
+    | * d36dbed - Add try catch block to test for and use if available new in 1.6 db transaction API (3 weeks ago) <Russell Jones>
     |/  
-    * ec5036c - (tag: alpha/0.0.22) bump version number (6 weeks ago) <benjaoming>
-    * 38252b8 - #213 django 1.6 trouble fixed (7 weeks ago) <benjaoming>
-    *   5538b39 - Merge branch 'master' of github.com:benjaoming/django-wiki (7 weeks ago) <benjaoming>
+    *   9931ffd - Merge pull request #217 from tominardi/master (5 weeks ago) <benjaoming>
     |\  
-    | * 5cab46e - Change requirements to use Pillow instead of PIL (7 weeks ago) <benjaoming>
-    | * 127ada5 - Ah whatever... just delete everything about PIL!! (7 weeks ago) <benjaoming>
-    | * 525b1b5 - PIL / Pillow related docs (7 weeks ago) <benjaoming>
-    * | 974db28 - Add PyCharm ignores (7 weeks ago) <benjaoming>
+    | * 59a5614 - Edit french translations (5 weeks ago) <tominardi>
     |/  
-    * 40c6a4e - make README compatible with the pandoc translation to ReST (7 weeks ago) <benjaoming>
-    * ffd2216 - Readme and Changelog update (7 weeks ago) <benjaoming>
-    * 2f59ecb - version bump to 0.0.21 (7 weeks ago) <benjaoming>
-    * 6e47242 - Fix #191 - introduce DRY in plugins.notifications default_url (7 weeks ago) <benjaoming>
-    * 363f50a - Fix #206 by upgrading markitup to newer version (7 weeks ago) <benjaoming>
-    * 34ac301 - Fix #207 and upgrade to jquery 1.10.2 (7 weeks ago) <benjaoming>
-    * 57a3c97 - Fix #211 by adding a bit more clarity on the context variable handling (7 weeks ago) <benjaoming>
-    * e08b54d - Fix bug in decorator causing double reverse lookups (7 weeks ago) <benjaoming>
-    * e4d904e - Remove tests from plugins that are just stub implementations and not django 1.6 compat (8 weeks ago) <benjaoming>
-    * a71b0ff - README updated (8 weeks ago) <benjaoming>
-    * a5395e8 - syntax highlighting for README (8 weeks ago) <benjaoming>
-    * 233bcf4 - Writing a few words on usage (8 weeks ago) <benjaoming>
-    * 1db4378 - Add a screenshot (8 weeks ago) <benjaoming>
-    * ab87c5a - Adding Travis tests for Django 1.6 (8 weeks ago) <benjaoming>
-    * f1bad2d - automatically generate docs and CHANGELOG.md (8 weeks ago) <benjaoming>
-    * b757c6d - Trying out a markdown formatted auto-gererated for new releases CHANGELOG (8 weeks ago) <benjaoming>
-    * 22936c3 - Automating version number for sphinx (8 weeks ago) <benjaoming>
-    * f232fd6 - django 1.6 fix for #191 - ArticleRevision.get_latest_by should be single field, not tuple (8 weeks ago) <benjaoming>
-    * cc31f07 - django 1.6 and #191 BooleanField now has NULL value (8 weeks ago) <benjaoming>
-    *   d0ea990 - Merge pull request #208 from stratatech/master (2 months ago) <benjaoming>
+    * ec5036c - (tag: alpha/0.0.22) bump version number (8 weeks ago) <benjaoming>
+    * 38252b8 - #213 django 1.6 trouble fixed (9 weeks ago) <benjaoming>
+    *   5538b39 - Merge branch 'master' of github.com:benjaoming/django-wiki (9 weeks ago) <benjaoming>
     |\  
-    | * d8e872f - Russian translations fixes (2 months ago) <sminozhenko>
-    | * 13c3e06 - Remove unnecessary lamba function (2 months ago) <sminozhenko>
-    | * 164b416 - Russion translations + some missing label added + problem with transaltions in django_notify.settings.py (2 months ago) <sminozhenko>
+    | * 5cab46e - Change requirements to use Pillow instead of PIL (9 weeks ago) <benjaoming>
+    | * 127ada5 - Ah whatever... just delete everything about PIL!! (9 weeks ago) <benjaoming>
+    | * 525b1b5 - PIL / Pillow related docs (9 weeks ago) <benjaoming>
+    * | 974db28 - Add PyCharm ignores (9 weeks ago) <benjaoming>
     |/  
-    *   b4d3be8 - Merge pull request #202 from rgcarrasqueira/master (2 months ago) <benjaoming>
+    * 40c6a4e - make README compatible with the pandoc translation to ReST (9 weeks ago) <benjaoming>
+    * ffd2216 - Readme and Changelog update (9 weeks ago) <benjaoming>
+    * 2f59ecb - version bump to 0.0.21 (9 weeks ago) <benjaoming>
+    * 6e47242 - Fix #191 - introduce DRY in plugins.notifications default_url (9 weeks ago) <benjaoming>
+    * 363f50a - Fix #206 by upgrading markitup to newer version (9 weeks ago) <benjaoming>
+    * 34ac301 - Fix #207 and upgrade to jquery 1.10.2 (9 weeks ago) <benjaoming>
+    * 57a3c97 - Fix #211 by adding a bit more clarity on the context variable handling (9 weeks ago) <benjaoming>
+    * e08b54d - Fix bug in decorator causing double reverse lookups (9 weeks ago) <benjaoming>
+    * e4d904e - Remove tests from plugins that are just stub implementations and not django 1.6 compat (10 weeks ago) <benjaoming>
+    * a71b0ff - README updated (10 weeks ago) <benjaoming>
+    * a5395e8 - syntax highlighting for README (10 weeks ago) <benjaoming>
+    * 233bcf4 - Writing a few words on usage (10 weeks ago) <benjaoming>
+    * 1db4378 - Add a screenshot (10 weeks ago) <benjaoming>
+    * ab87c5a - Adding Travis tests for Django 1.6 (10 weeks ago) <benjaoming>
+    * f1bad2d - automatically generate docs and CHANGELOG.md (10 weeks ago) <benjaoming>
+    * b757c6d - Trying out a markdown formatted auto-gererated for new releases CHANGELOG (10 weeks ago) <benjaoming>
+    * 22936c3 - Automating version number for sphinx (10 weeks ago) <benjaoming>
+    * f232fd6 - django 1.6 fix for #191 - ArticleRevision.get_latest_by should be single field, not tuple (10 weeks ago) <benjaoming>
+    * cc31f07 - django 1.6 and #191 BooleanField now has NULL value (10 weeks ago) <benjaoming>
+    *   d0ea990 - Merge pull request #208 from stratatech/master (3 months ago) <benjaoming>
+    |\  
+    | * d8e872f - Russian translations fixes (3 months ago) <sminozhenko>
+    | * 13c3e06 - Remove unnecessary lamba function (3 months ago) <sminozhenko>
+    | * 164b416 - Russion translations + some missing label added + problem with transaltions in django_notify.settings.py (3 months ago) <sminozhenko>
+    |/  
+    *   b4d3be8 - Merge pull request #202 from rgcarrasqueira/master (3 months ago) <benjaoming>
     |\  
     | * 8ede8b8 - Bugfix request method is not found Django 1.4.7 (3 months ago) <Rogério Carrasqueira>
     | * 02f4bbe - Changing mptt to 0.5.3 (3 months ago) <Rogério Carrasqueira>
@@ -57,34 +70,34 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     |/|   
     | * ef4cccf - Updated translation. Fixed some minor issues. (3 months ago) <Thomas Lottermann>
     |/  
-    * af767e3 - Instruction text for direct pip installation from git (3 months ago) <benjaoming>
-    *   6104404 - Merge pull request #199 from TomLottermann/master (3 months ago) <benjaoming>
+    * af767e3 - Instruction text for direct pip installation from git (4 months ago) <benjaoming>
+    *   6104404 - Merge pull request #199 from TomLottermann/master (4 months ago) <benjaoming>
     |\  
-    | * 29a03a3 - indentation fixed (3 months ago) <Thomas Lottermann>
-    | * d3b52cf - pagination broke with bootstrap 3. It now works again! (3 months ago) <Thomas Lottermann>
+    | * 29a03a3 - indentation fixed (4 months ago) <Thomas Lottermann>
+    | * d3b52cf - pagination broke with bootstrap 3. It now works again! (4 months ago) <Thomas Lottermann>
     |/  
-    *   db32a3e - Merge pull request #198 from TomLottermann/master (3 months ago) <benjaoming>
+    *   db32a3e - Merge pull request #198 from TomLottermann/master (4 months ago) <benjaoming>
     |\  
-    | *   be3b35d - Merge remote-tracking branch 'upstream/master' (3 months ago) <Thomas Lottermann>
+    | *   be3b35d - Merge remote-tracking branch 'upstream/master' (4 months ago) <Thomas Lottermann>
     | |\  
     | |/  
     |/|   
-    * | d07ba79 - fix #193 - only add style to input type=text/password (3 months ago) <benjaoming>
-    * | c8d9307 - Fix [TOC] compatibility with custom ids and add support for [[WikiLink]] #179 (3 months ago) <benjaoming>
-    * | c73d331 - remove bogus highlight plugin (3 months ago) <benjaoming>
-    * |   809a12f - Merge branch 'master' of github.com:benjaoming/django-wiki (3 months ago) <benjaoming>
+    * | d07ba79 - fix #193 - only add style to input type=text/password (4 months ago) <benjaoming>
+    * | c8d9307 - Fix [TOC] compatibility with custom ids and add support for [[WikiLink]] #179 (4 months ago) <benjaoming>
+    * | c73d331 - remove bogus highlight plugin (4 months ago) <benjaoming>
+    * |   809a12f - Merge branch 'master' of github.com:benjaoming/django-wiki (4 months ago) <benjaoming>
     |\ \  
-    | * \   d956400 - Merge pull request #190 from yedpodtrzitko/master (3 months ago) <benjaoming>
+    | * \   d956400 - Merge pull request #190 from yedpodtrzitko/master (4 months ago) <benjaoming>
     | |\ \  
     | | * | 085d4aa - bump translations (5 months ago) <yed_>
     | | * | e4e655e - show info about missing root instead of redirect to login (fix #174) (5 months ago) <yed_>
-    * | | | 92cddce - add codehilite to default markdown extensions and close #134 (3 months ago) <benjaoming>
+    * | | | 92cddce - add codehilite to default markdown extensions and close #134 (4 months ago) <benjaoming>
     |/ / /  
-    * | |   e5cbdf4 - Merge branch 'master' of github.com:benjaoming/django-wiki (3 months ago) <benjaoming>
+    * | |   e5cbdf4 - Merge branch 'master' of github.com:benjaoming/django-wiki (4 months ago) <benjaoming>
     |\ \ \  
-    * | | | aca44f0 - fix #197 - use twitter typeahead (3 months ago) <benjaoming>
-    * | | | 9716942 - ignore haystack test indexes (3 months ago) <benjaoming>
-    | | | * b7c24ed - Group and owner can be null. The index must support this! (3 months ago) <Thomas Lottermann>
+    * | | | aca44f0 - fix #197 - use twitter typeahead (4 months ago) <benjaoming>
+    * | | | 9716942 - ignore haystack test indexes (4 months ago) <benjaoming>
+    | | | * b7c24ed - Group and owner can be null. The index must support this! (4 months ago) <Thomas Lottermann>
     | | |/  
     | |/|   
     | * |   51019fc - Merge pull request #192 from jbazik/master (5 months ago) <benjaoming>
@@ -118,34 +131,34 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     |/  
     * 2108a32 - grid layout on all form-action occurences (5 months ago) <benjaoming>
     * 5a90cfe - more issues in bootstrap 3 form widgets (5 months ago) <benjaoming>
-    * bb89355 - textarea height and edit page button layout (5 months ago) <benjaoming>
-    * 4aef17a - Fix #181 and #183 -- responsive modals, prepend for form inputs, form controls fixed for horizontal and vertical layouts (5 months ago) <benjaoming>
-    * eb21b9d - bootstrap 3 compat on attachments plugin (5 months ago) <benjaoming>
-    * 826b082 - fix 404 on respond.js (5 months ago) <benjaoming>
-    *   3253098 - Merge branch 'master' of github.com:benjaoming/django-wiki (5 months ago) <benjaoming>
+    * bb89355 - textarea height and edit page button layout (6 months ago) <benjaoming>
+    * 4aef17a - Fix #181 and #183 -- responsive modals, prepend for form inputs, form controls fixed for horizontal and vertical layouts (6 months ago) <benjaoming>
+    * eb21b9d - bootstrap 3 compat on attachments plugin (6 months ago) <benjaoming>
+    * 826b082 - fix 404 on respond.js (6 months ago) <benjaoming>
+    *   3253098 - Merge branch 'master' of github.com:benjaoming/django-wiki (6 months ago) <benjaoming>
     |\  
-    | *   5b34a24 - Merge pull request #185 from vezjakv/master (5 months ago) <benjaoming>
+    | *   5b34a24 - Merge pull request #185 from vezjakv/master (6 months ago) <benjaoming>
     | |\  
-    | | * cbb815a - Init std.out stream handler compatable with Python 2.6 (5 months ago) <vezjakv>
+    | | * cbb815a - Init std.out stream handler compatable with Python 2.6 (6 months ago) <vezjakv>
     | |/  
-    | * 27cc33c - Update README.md (5 months ago) <benjaoming>
-    | * d059edb - SHA digest should display as link (5 months ago) <benjaoming>
-    | * 515a1b7 - News update (5 months ago) <benjaoming>
-    | * a594811 - Github Markdown broken on multiple comments in one line (5 months ago) <benjaoming>
-    * | 8e77f06 - add codehilite note in README and a testproject settings module (5 months ago) <benjaoming>
-    * | 06aa0e2 - add codehilite CSS to enable syntax highlighting for the codehilite Markdown extension (5 months ago) <benjaoming>
-    * | e4382c8 - strip tags from Haystack searches (5 months ago) <benjaoming>
-    * | 0cf10f5 - fix some more btn-default (5 months ago) <benjaoming>
-    * | 47dee16 - fix btn-default in some other cases (5 months ago) <benjaoming>
-    * | 9ccb216 - fix bootstrap btn-default class (5 months ago) <benjaoming>
+    | * 27cc33c - Update README.md (6 months ago) <benjaoming>
+    | * d059edb - SHA digest should display as link (6 months ago) <benjaoming>
+    | * 515a1b7 - News update (6 months ago) <benjaoming>
+    | * a594811 - Github Markdown broken on multiple comments in one line (6 months ago) <benjaoming>
+    * | 8e77f06 - add codehilite note in README and a testproject settings module (6 months ago) <benjaoming>
+    * | 06aa0e2 - add codehilite CSS to enable syntax highlighting for the codehilite Markdown extension (6 months ago) <benjaoming>
+    * | e4382c8 - strip tags from Haystack searches (6 months ago) <benjaoming>
+    * | 0cf10f5 - fix some more btn-default (6 months ago) <benjaoming>
+    * | 47dee16 - fix btn-default in some other cases (6 months ago) <benjaoming>
+    * | 9ccb216 - fix bootstrap btn-default class (6 months ago) <benjaoming>
     |/  
-    * d8149a6 - fix #182 - bootstrap problem, not html (5 months ago) <benjaoming>
-    * be42a26 - include font files in MANIFEST (5 months ago) <benjaoming>
-    * d077af2 - responsive search form (5 months ago) <benjaoming>
-    * fbccb07 - Fix search form on chromium (5 months ago) <benjaoming>
-    * 657b8f9 - remove old bootstrap files (5 months ago) <benjaoming>
-    * 34b9117 - refactor bootstrap grid layout (5 months ago) <benjaoming>
-    * b919d54 - Upgrade to Bootstrap 3 RC1, add font-awesome, lots of refactoring (5 months ago) <benjaoming>
+    * d8149a6 - fix #182 - bootstrap problem, not html (6 months ago) <benjaoming>
+    * be42a26 - include font files in MANIFEST (6 months ago) <benjaoming>
+    * d077af2 - responsive search form (6 months ago) <benjaoming>
+    * fbccb07 - Fix search form on chromium (6 months ago) <benjaoming>
+    * 657b8f9 - remove old bootstrap files (6 months ago) <benjaoming>
+    * 34b9117 - refactor bootstrap grid layout (6 months ago) <benjaoming>
+    * b919d54 - Upgrade to Bootstrap 3 RC1, add font-awesome, lots of refactoring (6 months ago) <benjaoming>
     * 204cc43 - make __init__.py always try to import settings.local (6 months ago) <benjaoming>
     * 91064d6 - Add SECRET_KEY to standard settings so testproject runs out of the box (6 months ago) <benjaoming>
     * e624b61 - Remove old settings_local.py (6 months ago) <benjaoming>
@@ -177,9 +190,9 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     * 810bd00 - Automatically generate README.rst for PyPi (6 months ago) <benjaoming>
     *   0c49222 - Merge branches 'master' and 'haystack' of github.com:benjaoming/django-wiki into haystack (6 months ago) <benjaoming>
     |\  
-    | *   b9d969d - Merge pull request #172 from holdenweb/patch-1 (6 months ago) <benjaoming>
+    | *   b9d969d - Merge pull request #172 from holdenweb/patch-1 (7 months ago) <benjaoming>
     | |\  
-    | | * bcb47c9 - Update README.md (6 months ago) <Steve Holden>
+    | | * bcb47c9 - Update README.md (7 months ago) <Steve Holden>
     | |/  
     | *   3a06ff1 - Merge pull request #168 from TomLottermann/master (7 months ago) <benjaoming>
     | |\  
@@ -204,46 +217,46 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     |/| |   
     | * |   784f8d6 - Merge pull request #1 from TomLottermann/haystack-search (7 months ago) <jdcaballero>
     | |\ \  
-    | | * | 6108d30 - Minor fix (7 months ago) <Thomas Lottermann>
-    | | * | e10d573 - Haystack 2.0 broke some stuff (site did not exist). This is fixed now. Furthermore we can use the highlighter by haystack. It does some stuff nicer than django-wikis (7 months ago) <Thomas Lottermann>
-    | | * | e68272c - Some minor cleanup and same redirect behaviour on anonymous access (7 months ago) <Thomas Lottermann>
-    | | * |   a1a25c2 - Merge remote-tracking branch 'jdcaballero/haystack-search' into haystack-search (7 months ago) <Thomas Lottermann>
+    | | * | 6108d30 - Minor fix (8 months ago) <Thomas Lottermann>
+    | | * | e10d573 - Haystack 2.0 broke some stuff (site did not exist). This is fixed now. Furthermore we can use the highlighter by haystack. It does some stuff nicer than django-wikis (8 months ago) <Thomas Lottermann>
+    | | * | e68272c - Some minor cleanup and same redirect behaviour on anonymous access (8 months ago) <Thomas Lottermann>
+    | | * |   a1a25c2 - Merge remote-tracking branch 'jdcaballero/haystack-search' into haystack-search (8 months ago) <Thomas Lottermann>
     | | |\ \  
     | | |/ /  
     | |/| /   
     | | |/    
     | * | 4035783 - Permissions bare implementation (10 months ago) <Juan Diego Caballero>
-    | * | ba667f1 - Paginator used to show the number of results (10 months ago) <Juan Diego Caballero>
-    | * | 54c14bb - Initial Implementation of Search using Haystack (10 months ago) <Juan Diego Caballero>
-    * | | dfe7be5 - hand empty notifications settings (7 months ago) <benjaoming>
-    * | | d7df0af - pep8 cleanup (7 months ago) <benjaoming>
-    * | | ed9d853 - Add notification interval to Article Settings page + New Notifications Settings page (7 months ago) <benjaoming>
-    * | | 1d4faa9 - get_absolute_path added to Article model (7 months ago) <benjaoming>
-    * | | 0a946c5 - Bootstrap 2.3.2 added and compatibility changes for dropdown menu (7 months ago) <benjaoming>
-    * | | c24c882 - cleanup bootstrap (7 months ago) <benjaoming>
+    | * | ba667f1 - Paginator used to show the number of results (11 months ago) <Juan Diego Caballero>
+    | * | 54c14bb - Initial Implementation of Search using Haystack (11 months ago) <Juan Diego Caballero>
+    * | | dfe7be5 - hand empty notifications settings (8 months ago) <benjaoming>
+    * | | d7df0af - pep8 cleanup (8 months ago) <benjaoming>
+    * | | ed9d853 - Add notification interval to Article Settings page + New Notifications Settings page (8 months ago) <benjaoming>
+    * | | 1d4faa9 - get_absolute_path added to Article model (8 months ago) <benjaoming>
+    * | | 0a946c5 - Bootstrap 2.3.2 added and compatibility changes for dropdown menu (8 months ago) <benjaoming>
+    * | | c24c882 - cleanup bootstrap (8 months ago) <benjaoming>
     | |/  
     |/|   
-    * | c259b31 - Alter plugin API: BasePlugin.urlpatterns is now a dictionary (7 months ago) <benjaoming>
-    * | ca59f20 - undo, only bad inheritance results in need of self.request set here (7 months ago) <benjaoming>
-    * | 8bab47d - self.request on ArticleMixin view to allow for parent dispatch methods assuming its existence (7 months ago) <benjaoming>
-    * | 0b9c2c5 - shorten database settings (7 months ago) <benjaoming>
-    * | ac04cb6 - fix missing refactoring on renamed template block wiki_pagetitle (7 months ago) <benjaoming>
-    * |   dfb9456 - Merge branch 'master' of github.com:benjaoming/django-wiki (7 months ago) <benjaoming>
+    * | c259b31 - Alter plugin API: BasePlugin.urlpatterns is now a dictionary (8 months ago) <benjaoming>
+    * | ca59f20 - undo, only bad inheritance results in need of self.request set here (8 months ago) <benjaoming>
+    * | 8bab47d - self.request on ArticleMixin view to allow for parent dispatch methods assuming its existence (8 months ago) <benjaoming>
+    * | 0b9c2c5 - shorten database settings (8 months ago) <benjaoming>
+    * | ac04cb6 - fix missing refactoring on renamed template block wiki_pagetitle (8 months ago) <benjaoming>
+    * |   dfb9456 - Merge branch 'master' of github.com:benjaoming/django-wiki (8 months ago) <benjaoming>
     |\ \  
-    | * | 00e4713 - Update README.md (7 months ago) <benjaoming>
-    * | | 0d13578 - Fix #161 (mark accumulated notifications is_emailed=False) + clean up code + make notification email nicer (7 months ago) <benjaoming>
+    | * | 00e4713 - Update README.md (8 months ago) <benjaoming>
+    * | | 0d13578 - Fix #161 (mark accumulated notifications is_emailed=False) + clean up code + make notification email nicer (8 months ago) <benjaoming>
     |/ /  
-    * |   a84eb16 - Merge branch 'master' of github.com:benjaoming/django-wiki (7 months ago) <benjaoming>
+    * |   a84eb16 - Merge branch 'master' of github.com:benjaoming/django-wiki (8 months ago) <benjaoming>
     |\ \  
-    | * | b78edee - Update README.md (7 months ago) <benjaoming>
-    * | | 00cf45b - (tag: alpha/0.0.20) Bump to 0.0.20 (7 months ago) <benjaoming>
+    | * | b78edee - Update README.md (8 months ago) <benjaoming>
+    * | | 00cf45b - (tag: alpha/0.0.20) Bump to 0.0.20 (8 months ago) <benjaoming>
     |/ /  
-    * |   cc537a5 - Merge pull request #159 from TomLottermann/master (7 months ago) <benjaoming>
+    * |   cc537a5 - Merge pull request #159 from TomLottermann/master (8 months ago) <benjaoming>
     |\ \  
-    | * | 1bc5e48 - The management command now loads the language see https://docs.djangoproject.com/en/dev/howto/custom-management-commands/ for more details (7 months ago) <Thomas Lottermann>
-    | * | 5c53280 - adding missing manifest information. language files were not included in the build. (7 months ago) <Thomas Lottermann>
+    | * | 1bc5e48 - The management command now loads the language see https://docs.djangoproject.com/en/dev/howto/custom-management-commands/ for more details (8 months ago) <Thomas Lottermann>
+    | * | 5c53280 - adding missing manifest information. language files were not included in the build. (8 months ago) <Thomas Lottermann>
     |/ /  
-    * |   10c6444 - Merge pull request #157 from crazyzubr/master (7 months ago) <benjaoming>
+    * |   10c6444 - Merge pull request #157 from crazyzubr/master (8 months ago) <benjaoming>
     |\ \  
     | * | 6575a4a - simplify notify_settings (8 months ago) <crazyzubr>
     | * | dca3618 - fix notify_settings confuse (8 months ago) <crazyzubr>
@@ -285,18 +298,18 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     | |\ \  
     | | * | ee85908 - Remove space from urlify.js path (8 months ago) <xiaclo>
     | |/ /  
-    | * |   7e0f0a3 - Merge pull request #149 from TomLottermann/master (8 months ago) <benjaoming>
+    | * |   7e0f0a3 - Merge pull request #149 from TomLottermann/master (9 months ago) <benjaoming>
     | |\ \  
-    | | * | 8782c84 - Slug stays fixed if the article already has a initial slug (8 months ago) <TomLottermann>
-    | * | |   b5acff0 - Merge pull request #147 from TomLottermann/master (8 months ago) <benjaoming>
+    | | * | 8782c84 - Slug stays fixed if the article already has a initial slug (9 months ago) <TomLottermann>
+    | * | |   b5acff0 - Merge pull request #147 from TomLottermann/master (9 months ago) <benjaoming>
     | |\ \ \  
     | | |/ /  
-    | | * |   6a69d88 - Merge remote-tracking branch 'upstream/master' (8 months ago) <TomLottermann>
+    | | * |   6a69d88 - Merge remote-tracking branch 'upstream/master' (9 months ago) <TomLottermann>
     | | |\ \  
     | | |/ /  
     | |/| |   
     | * | | 7f172fb - Update README.md (9 months ago) <benjaoming>
-    | | * | 493305b - Added wrapSelection to editor.js (8 months ago) <TomLottermann>
+    | | * | 493305b - Added wrapSelection to editor.js (9 months ago) <TomLottermann>
     * | | | 5b6c496 - (tag: alpha/0.0.19) Version bump (9 months ago) <benjaoming>
     |/ / /  
     * | | 61b3c61 - Make the urlize parser more strict (9 months ago) <benjaoming>
@@ -305,81 +318,81 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     * | | 83c72bf - lock main article in the test project (9 months ago) <benjaoming>
     * | | dec9335 - Add attr_list to allow e.g. custom Header ids for custom references to header sections (9 months ago) <benjaoming>
     * | | 1a896ed - Markdown needs to be >2.2.0 due to 2.1.1 headerid extension tested broken with newer ElemenTree versions (9 months ago) <benjaoming>
-    * | | 09e8af9 - less blahblah on the contribution stuff (9 months ago) <benjaoming>
-    * | | 78bf232 - remove pip --use-mirrors (9 months ago) <benjaoming>
-    * | |   6a1217c - Merge branch 'master' of github.com:benjaoming/django-wiki (9 months ago) <benjaoming>
+    * | | 09e8af9 - less blahblah on the contribution stuff (10 months ago) <benjaoming>
+    * | | 78bf232 - remove pip --use-mirrors (10 months ago) <benjaoming>
+    * | |   6a1217c - Merge branch 'master' of github.com:benjaoming/django-wiki (10 months ago) <benjaoming>
     |\ \ \  
-    | * \ \   60bcbbd - Merge pull request #143 from TomLottermann/master (9 months ago) <benjaoming>
+    | * \ \   60bcbbd - Merge pull request #143 from TomLottermann/master (10 months ago) <benjaoming>
     | |\ \ \  
     | | |/ /  
-    | | * |   9ca5afb - Merge branch 'master' of github.com:TomLottermann/django-wiki (9 months ago) <TomLottermann>
+    | | * |   9ca5afb - Merge branch 'master' of github.com:TomLottermann/django-wiki (10 months ago) <TomLottermann>
     | | |\ \  
-    | | | * | d4ce6ca - Fixed wrong icon when deleting article (9 months ago) <TomLottermann>
-    | | * | | 06dc3ed - Fixed wrong icon when deleting article (9 months ago) <TomLottermann>
+    | | | * | d4ce6ca - Fixed wrong icon when deleting article (10 months ago) <TomLottermann>
+    | | * | | 06dc3ed - Fixed wrong icon when deleting article (10 months ago) <TomLottermann>
     | | |/ /  
-    | * | |   d280dd4 - Merge pull request #142 from TomLottermann/master (9 months ago) <benjaoming>
+    | * | |   d280dd4 - Merge pull request #142 from TomLottermann/master (10 months ago) <benjaoming>
     | |\ \ \  
     | | |/ /  
-    | | * | a705f64 - version fix (9 months ago) <TomLottermann>
-    | | * | 4cbc633 - version fix (9 months ago) <TomLottermann>
-    | | * | 7188641 - Added translations for django_notify (9 months ago) <TomLottermann>
-    | | * | acba7f7 - Respected changes, reformatted the lines (9 months ago) <TomLottermann>
+    | | * | a705f64 - version fix (10 months ago) <TomLottermann>
+    | | * | 4cbc633 - version fix (10 months ago) <TomLottermann>
+    | | * | 7188641 - Added translations for django_notify (10 months ago) <TomLottermann>
+    | | * | acba7f7 - Respected changes, reformatted the lines (10 months ago) <TomLottermann>
     | |/ /  
-    * | | c2f450b - fix SimplePlugin constructor - pull #144 (9 months ago) <benjaoming>
+    * | | c2f450b - fix SimplePlugin constructor - pull #144 (10 months ago) <benjaoming>
     |/ /  
-    * |   ca5e28a - pull #141 - remove old test mechanism, try adding Warning failure (9 months ago) <benjaoming>
+    * |   ca5e28a - pull #141 - remove old test mechanism, try adding Warning failure (10 months ago) <benjaoming>
     |\ \  
-    | * | 16f8e0b - pull #141 - add manage.py test + Django 1.5 to Travis config (9 months ago) <benjaoming>
-    * | | e36f597 - pull #141 - remove old test mechanism, try adding Warning failure (9 months ago) <benjaoming>
+    | * | 16f8e0b - pull #141 - add manage.py test + Django 1.5 to Travis config (10 months ago) <benjaoming>
+    * | | e36f597 - pull #141 - remove old test mechanism, try adding Warning failure (10 months ago) <benjaoming>
     |/ /  
-    * |   177bf3c - Merge pull request #141 from hynekcer/master (9 months ago) <benjaoming>
+    * |   177bf3c - Merge pull request #141 from hynekcer/master (10 months ago) <benjaoming>
     |\ \  
-    | * | eecd8a5 - Fixed on_article_delete_clear_cache. Some articles in the cache were not cleared and tests failed. (9 months ago) <Hynek Cernoch>
-    | * | 2ad0694 - Added tests for clearing cache and for updating article_list (9 months ago) <Hynek Cernoch>
-    | * | effc58a - Fixed on_article_delete if the article has children. (9 months ago) <Hynek Cernoch>
-    | * | 44e4d7a - Added more tests and refactored the the first one. (9 months ago) <Hynek Cernoch>
-    | * | 6dc14a1 - Fixed RuntimeWarning by replacing naive datetime by utc (9 months ago) <Hynek Cernoch>
-    * | | d746543 - #140 - Markdown 2.2/2.3 API change - do not rely on markdown.extensions.headerid.unique (9 months ago) <benjaoming>
+    | * | eecd8a5 - Fixed on_article_delete_clear_cache. Some articles in the cache were not cleared and tests failed. (10 months ago) <Hynek Cernoch>
+    | * | 2ad0694 - Added tests for clearing cache and for updating article_list (10 months ago) <Hynek Cernoch>
+    | * | effc58a - Fixed on_article_delete if the article has children. (10 months ago) <Hynek Cernoch>
+    | * | 44e4d7a - Added more tests and refactored the the first one. (10 months ago) <Hynek Cernoch>
+    | * | 6dc14a1 - Fixed RuntimeWarning by replacing naive datetime by utc (10 months ago) <Hynek Cernoch>
+    * | | d746543 - #140 - Markdown 2.2/2.3 API change - do not rely on markdown.extensions.headerid.unique (10 months ago) <benjaoming>
     |/ /  
-    * | f6eb8be - French translation - changed msg id (att. pull #138) (9 months ago) <benjaoming>
-    * | 8332ab6 - pull #139 - form data from args or kwargs (9 months ago) <benjaoming>
-    * |   1aa8eb2 - Merge branch 'master' of github.com:benjaoming/django-wiki (9 months ago) <benjaoming>
+    * | f6eb8be - French translation - changed msg id (att. pull #138) (10 months ago) <benjaoming>
+    * | 8332ab6 - pull #139 - form data from args or kwargs (10 months ago) <benjaoming>
+    * |   1aa8eb2 - Merge branch 'master' of github.com:benjaoming/django-wiki (10 months ago) <benjaoming>
     |\ \  
-    | * | 4f0ef1a - pull #139 - form data from args or kwargs (9 months ago) <benjaoming>
-    * | | 09f91ea - pull #139 - form data from args or kwargs (9 months ago) <benjaoming>
+    | * | 4f0ef1a - pull #139 - form data from args or kwargs (10 months ago) <benjaoming>
+    * | | 09f91ea - pull #139 - form data from args or kwargs (10 months ago) <benjaoming>
     |/ /  
-    * |   159025b - Merge pull request #139 from hynekcer/master (9 months ago) <benjaoming>
+    * |   159025b - Merge pull request #139 from hynekcer/master (10 months ago) <benjaoming>
     |\ \  
-    | * | 634c3c0 - Revert "Fixed posting data to views.article.Preview" (9 months ago) <Hynek Cernoch>
-    | * | 1bba4ec - Added recursion test for the current bug in preview. (9 months ago) <Hynek Cernoch>
+    | * | 634c3c0 - Revert "Fixed posting data to views.article.Preview" (10 months ago) <Hynek Cernoch>
+    | * | 1bba4ec - Added recursion test for the current bug in preview. (10 months ago) <Hynek Cernoch>
     |/ /  
-    * |   c3bbc37 - Do not use kwargs for permission methods (9 months ago) <benjaoming>
+    * |   c3bbc37 - Do not use kwargs for permission methods (10 months ago) <benjaoming>
     |\ \  
-    | * | 2d7957a - Do not use kwargs for permission methods (9 months ago) <benjaoming>
-    * | | 37d9939 - Do not use kwargs for permission methods (9 months ago) <benjaoming>
+    | * | 2d7957a - Do not use kwargs for permission methods (10 months ago) <benjaoming>
+    * | | 37d9939 - Do not use kwargs for permission methods (10 months ago) <benjaoming>
     |/ /  
-    * | d37e09c - #137 place permission logic ONLY in core.permissions and make article.can_read and article.can_write configurable (9 months ago) <benjaoming>
-    * |   fdd36cd - Merge branch 'master' of github.com:benjaoming/django-wiki (9 months ago) <benjaoming>
+    * | d37e09c - #137 place permission logic ONLY in core.permissions and make article.can_read and article.can_write configurable (10 months ago) <benjaoming>
+    * |   fdd36cd - Merge branch 'master' of github.com:benjaoming/django-wiki (10 months ago) <benjaoming>
     |\ \  
-    | * \   de55506 - Merge pull request #138 from jdcaballero/master (9 months ago) <benjaoming>
+    | * \   de55506 - Merge pull request #138 from jdcaballero/master (10 months ago) <benjaoming>
     | |\ \  
-    | | * \   054b3af - Merge remote-tracking branch 'origin/master' (9 months ago) <Juan Diego Caballero>
+    | | * \   054b3af - Merge remote-tracking branch 'origin/master' (10 months ago) <Juan Diego Caballero>
     | | |\ \  
     | | |/ /  
     | |/| |   
-    | * | | 84dc39f - More clear PIL instructions. (9 months ago) <benjaoming>
-    | | * | 5468b9a - Spanish translations added. (9 months ago) <Juan Diego Caballero>
-    | | * | b74303e - Do not use HttpResponseRedirectBase anyways, just check status_code (9 months ago) <benjaoming>
-    | | * | 43dbdd9 - fix imporerror for HttpResponseRedirectBase (9 months ago) <benjaoming>
-    | | * | bc0eff8 - JSON view can return HttpResponseRedirect (9 months ago) <benjaoming>
-    | | * | 71a6457 - changing apt-get to use python-imaging (9 months ago) <Dennis Coldwell>
-    | | * | f76bc85 - adding PIL pre-req documentation (9 months ago) <Dennis Coldwell>
-    * | | | 71c59d6 - fix wrong form target on clicking 'Switch to selected version' + modal window height (9 months ago) <benjaoming>
+    | * | | 84dc39f - More clear PIL instructions. (10 months ago) <benjaoming>
+    | | * | 5468b9a - Spanish translations added. (10 months ago) <Juan Diego Caballero>
+    | | * | b74303e - Do not use HttpResponseRedirectBase anyways, just check status_code (10 months ago) <benjaoming>
+    | | * | 43dbdd9 - fix imporerror for HttpResponseRedirectBase (10 months ago) <benjaoming>
+    | | * | bc0eff8 - JSON view can return HttpResponseRedirect (10 months ago) <benjaoming>
+    | | * | 71a6457 - changing apt-get to use python-imaging (10 months ago) <Dennis Coldwell>
+    | | * | f76bc85 - adding PIL pre-req documentation (10 months ago) <Dennis Coldwell>
+    * | | | 71c59d6 - fix wrong form target on clicking 'Switch to selected version' + modal window height (10 months ago) <benjaoming>
     |/ / /  
-    * | | beb7571 - Do not use HttpResponseRedirectBase anyways, just check status_code (9 months ago) <benjaoming>
-    * | | 6da0fd9 - fix imporerror for HttpResponseRedirectBase (9 months ago) <benjaoming>
-    * | | 3f1ac96 - JSON view can return HttpResponseRedirect (9 months ago) <benjaoming>
-    * | |   6a9539d - Merge branch 'master' of github.com:benjaoming/django-wiki (9 months ago) <benjaoming>
+    * | | beb7571 - Do not use HttpResponseRedirectBase anyways, just check status_code (10 months ago) <benjaoming>
+    * | | 6da0fd9 - fix imporerror for HttpResponseRedirectBase (10 months ago) <benjaoming>
+    * | | 3f1ac96 - JSON view can return HttpResponseRedirect (10 months ago) <benjaoming>
+    * | |   6a9539d - Merge branch 'master' of github.com:benjaoming/django-wiki (10 months ago) <benjaoming>
     |\ \ \  
     | |/ /  
     |/| |   
@@ -388,7 +401,7 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     | | * | ef83744 - changing apt-get to use python-imaging (10 months ago) <Dennis Coldwell>
     | | * | 4cf921f - adding PIL pre-req documentation (10 months ago) <Dennis Coldwell>
     | |/ /  
-    * | | 0ff3fd4 - Fix #136 (9 months ago) <benjaoming>
+    * | | 0ff3fd4 - Fix #136 (10 months ago) <benjaoming>
     |/ /  
     * | e9bd946 - add clearfix for article tocs and indexes (10 months ago) <benjaoming>
     * | 5fdb93d - fix #130 - display disabled dropdown when no assignment permission (10 months ago) <benjaoming>
@@ -423,13 +436,13 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     | * | 59b6558 - start of translations (10 months ago) <TomLottermann>
     | * | 8efc4bd - readme changed (10 months ago) <TomLottermann>
     |/ /  
-    * |   75a0581 - Merge branch 'master' of github.com:benjaoming/django-wiki (10 months ago) <benjaoming>
+    * |   75a0581 - Merge branch 'master' of github.com:benjaoming/django-wiki (11 months ago) <benjaoming>
     |\ \  
-    | * | 2b28521 - Update README.md (10 months ago) <benjaoming>
-    | * |   17b15d9 - Merge pull request #124 from SacNaturalFoods/master (10 months ago) <benjaoming>
+    | * | 2b28521 - Update README.md (11 months ago) <benjaoming>
+    | * |   17b15d9 - Merge pull request #124 from SacNaturalFoods/master (11 months ago) <benjaoming>
     | |\ \  
-    | | * | 3add05a - fixed _clear_ancestor_cache call (10 months ago) <tschmidt>
-    | * | |   bc57765 - Merge pull request #122 from SacNaturalFoods/master (10 months ago) <benjaoming>
+    | | * | 3add05a - fixed _clear_ancestor_cache call (11 months ago) <tschmidt>
+    | * | |   bc57765 - Merge pull request #122 from SacNaturalFoods/master (11 months ago) <benjaoming>
     | |\ \ \  
     | | |/ /  
     | | * | 088e2de - moved article save and delete clear cache signal handlers to Article model (11 months ago) <tschmidt-dev>
@@ -439,9 +452,9 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     | | * | | e20b2d6 - clear ancestor cache on save and delete article so that things like article_lists are refreshed (11 months ago) <tschmidt>
     | | | |/  
     | | |/|   
-    * | | | 6641ed1 - use self.stdout in django_notify management script logging (see django docs: https://docs.djangoproject.com/en/dev/howto/custom-management-commands/) (10 months ago) <benjaoming>
+    * | | | 6641ed1 - use self.stdout in django_notify management script logging (see django docs: https://docs.djangoproject.com/en/dev/howto/custom-management-commands/) (11 months ago) <benjaoming>
     |/ / /  
-    * | | df27e51 - Fixed posting data to views.article.Preview (10 months ago) <benjaoming>
+    * | | df27e51 - Fixed posting data to views.article.Preview (11 months ago) <benjaoming>
     | |/  
     |/|   
     * | c775a18 - #111 Add ancestor generator to Article (11 months ago) <benjaoming>
@@ -531,74 +544,74 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     * e4d0669 - add template assignment tag login_url (11 months ago) <benjaoming>
     * 73af524 - broken boostrap-responsive build (11 months ago) <benjaoming>
     * be19fdb - do not show deleted articles in article_list macro (11 months ago) <benjaoming>
-    *   6be1a3d - Merge branch 'master' of github.com:benjaoming/django-wiki (11 months ago) <benjaoming>
+    *   6be1a3d - Merge branch 'master' of github.com:benjaoming/django-wiki (12 months ago) <benjaoming>
     |\  
-    | * eb3bd0b - Update README.md (11 months ago) <benjaoming>
-    * | e6e0a84 - Add better info about licensing (11 months ago) <benjaoming>
+    | * eb3bd0b - Update README.md (12 months ago) <benjaoming>
+    * | e6e0a84 - Add better info about licensing (12 months ago) <benjaoming>
     |/  
-    * d25da1c - (tag: alpha/0.0.15) Bump to 0.0.15 (11 months ago) <benjaoming>
-    * 51daba0 - add model chart in pdf to the build-sdist process (11 months ago) <benjaoming>
-    * e7c70fd - typo (11 months ago) <benjaoming>
-    * 89b64aa - modify build to clean up old egg dir and add back the MANIFEST.in symlink (11 months ago) <benjaoming>
-    * d568683 - python 2.5 support (11 months ago) <benjaoming>
-    * 2c39d15 - do not fail when removing images located in non-existing dirs (11 months ago) <benjaoming>
-    * 628b59c - image plugin thumbnail css (11 months ago) <benjaoming>
-    * 948580c - image plugin thumbnail css (11 months ago) <benjaoming>
-    * da15d5d - use LESS for stylesheets by extending twitter-bootstrap (11 months ago) <benjaoming>
-    * 76a3532 - rm dupe lines (11 months ago) <benjaoming>
-    * f0c3458 - footer clearfix (11 months ago) <benjaoming>
-    *   ece1239 - Merge branch 'master' of github.com:benjaoming/django-wiki (11 months ago) <benjaoming>
+    * d25da1c - (tag: alpha/0.0.15) Bump to 0.0.15 (12 months ago) <benjaoming>
+    * 51daba0 - add model chart in pdf to the build-sdist process (12 months ago) <benjaoming>
+    * e7c70fd - typo (12 months ago) <benjaoming>
+    * 89b64aa - modify build to clean up old egg dir and add back the MANIFEST.in symlink (12 months ago) <benjaoming>
+    * d568683 - python 2.5 support (12 months ago) <benjaoming>
+    * 2c39d15 - do not fail when removing images located in non-existing dirs (12 months ago) <benjaoming>
+    * 628b59c - image plugin thumbnail css (12 months ago) <benjaoming>
+    * 948580c - image plugin thumbnail css (12 months ago) <benjaoming>
+    * da15d5d - use LESS for stylesheets by extending twitter-bootstrap (12 months ago) <benjaoming>
+    * 76a3532 - rm dupe lines (12 months ago) <benjaoming>
+    * f0c3458 - footer clearfix (12 months ago) <benjaoming>
+    *   ece1239 - Merge branch 'master' of github.com:benjaoming/django-wiki (12 months ago) <benjaoming>
     |\  
-    | *   94e6035 - Merge pull request #108 from SacNaturalFoods/master (11 months ago) <benjaoming>
+    | *   94e6035 - Merge pull request #108 from SacNaturalFoods/master (12 months ago) <benjaoming>
     | |\  
-    | | * 26c922b - removed overlooked debug print statements (11 months ago) <tschmidt-dev>
-    | | * 4d34e70 - fixed macro arg regex for args longer than 1 character (11 months ago) <tschmidt-dev>
+    | | * 26c922b - removed overlooked debug print statements (12 months ago) <tschmidt-dev>
+    | | * 4d34e70 - fixed macro arg regex for args longer than 1 character (12 months ago) <tschmidt-dev>
     | |/  
-    * | abe7282 - unfinished generic markdown extension (11 months ago) <benjaoming>
-    * | 53205ac - fix setting article fk on reusable plugins for identifying permissions (11 months ago) <benjaoming>
+    * | abe7282 - unfinished generic markdown extension (12 months ago) <benjaoming>
+    * | 53205ac - fix setting article fk on reusable plugins for identifying permissions (12 months ago) <benjaoming>
     |/  
-    * 7e6da88 - (tag: alpha/0.0.14) Bump to 0.0.14 (11 months ago) <benjaoming>
-    * 67d8cf3 - Security fix, do not call eval on input (11 months ago) <benjaoming>
-    * d9d19f0 - fix python 2.5 unknown elementree method (11 months ago) <benjaoming>
-    * f9a46f1 - (tag: alpha/0.0.13) Note on python 2.5 and improve article list (11 months ago) <benjaoming>
-    * c4e855d - Update README.md (11 months ago) <benjaoming>
-    * 076ad8e - Python 2.5 support note (11 months ago) <benjaoming>
-    * 0106b6f - python 2.5 support (11 months ago) <benjaoming>
-    * b86be8c - (tag: alpha/0.0.12) version bump to 0.0.12 (11 months ago) <benjaoming>
-    * d5f8352 - Fix #100 add print CSS and remove inline <style> (11 months ago) <benjaoming>
-    * 9070358 - Fix error in macros removing unknown tags from stack and prettify styling (11 months ago) <benjaoming>
-    * ff9ad26 - add a few more default markdown plugins (11 months ago) <benjaoming>
-    * 2ed231a - Apply user info on the creater of the first revision of the root article (11 months ago) <benjaoming>
-    * c50e05f - Display a helping exception message when MPTT is failing (11 months ago) <benjaoming>
-    * e25b3a4 - logo block for footer (11 months ago) <benjaoming>
-    * 1b06fb0 - Fix example code (11 months ago) <benjaoming>
-    * 2aabc2d - move macros configuration and do not include django_notify twice in the urlconf (11 months ago) <benjaoming>
-    * affa159 - Make django notify admin configurable so it can be excluded (11 months ago) <benjaoming>
-    *   d004700 - Merge branch 'master' of github.com:benjaoming/django-wiki (11 months ago) <benjaoming>
+    * 7e6da88 - (tag: alpha/0.0.14) Bump to 0.0.14 (12 months ago) <benjaoming>
+    * 67d8cf3 - Security fix, do not call eval on input (12 months ago) <benjaoming>
+    * d9d19f0 - fix python 2.5 unknown elementree method (12 months ago) <benjaoming>
+    * f9a46f1 - (tag: alpha/0.0.13) Note on python 2.5 and improve article list (12 months ago) <benjaoming>
+    * c4e855d - Update README.md (12 months ago) <benjaoming>
+    * 076ad8e - Python 2.5 support note (12 months ago) <benjaoming>
+    * 0106b6f - python 2.5 support (12 months ago) <benjaoming>
+    * b86be8c - (tag: alpha/0.0.12) version bump to 0.0.12 (12 months ago) <benjaoming>
+    * d5f8352 - Fix #100 add print CSS and remove inline <style> (12 months ago) <benjaoming>
+    * 9070358 - Fix error in macros removing unknown tags from stack and prettify styling (12 months ago) <benjaoming>
+    * ff9ad26 - add a few more default markdown plugins (12 months ago) <benjaoming>
+    * 2ed231a - Apply user info on the creater of the first revision of the root article (12 months ago) <benjaoming>
+    * c50e05f - Display a helping exception message when MPTT is failing (12 months ago) <benjaoming>
+    * e25b3a4 - logo block for footer (12 months ago) <benjaoming>
+    * 1b06fb0 - Fix example code (12 months ago) <benjaoming>
+    * 2aabc2d - move macros configuration and do not include django_notify twice in the urlconf (12 months ago) <benjaoming>
+    * affa159 - Make django notify admin configurable so it can be excluded (12 months ago) <benjaoming>
+    *   d004700 - Merge branch 'master' of github.com:benjaoming/django-wiki (12 months ago) <benjaoming>
     |\  
-    | *   365793d - Merge pull request #107 from SacNaturalFoods/master (11 months ago) <benjaoming>
+    | *   365793d - Merge pull request #107 from SacNaturalFoods/master (12 months ago) <benjaoming>
     | |\  
-    | | * 22486f5 - added kwargs logic to macros plugin and depth kwarg to article_list macro (11 months ago) <tschmidt-dev>
+    | | * 22486f5 - added kwargs logic to macros plugin and depth kwarg to article_list macro (12 months ago) <tschmidt-dev>
     | |/  
-    * | b336586 - Add help sidebar for macros and make allowed methods configurable (11 months ago) <benjaoming>
+    * | b336586 - Add help sidebar for macros and make allowed methods configurable (12 months ago) <benjaoming>
     |/  
-    * 0751cc8 - using wrong class for widget when in readonly mode on some settings form fields (11 months ago) <benjaoming>
-    * 86ee414 - receive post_save signal only using kwargs (11 months ago) <benjaoming>
-    * 91076f2 - security fix for macro plugin, add plugins.acros to testproject (11 months ago) <benjaoming>
-    *   933ac19 - Merge pull request #105 from SacNaturalFoods/master (11 months ago) <benjaoming>
+    * 0751cc8 - using wrong class for widget when in readonly mode on some settings form fields (12 months ago) <benjaoming>
+    * 86ee414 - receive post_save signal only using kwargs (12 months ago) <benjaoming>
+    * 91076f2 - security fix for macro plugin, add plugins.acros to testproject (12 months ago) <benjaoming>
+    *   933ac19 - Merge pull request #105 from SacNaturalFoods/master (12 months ago) <benjaoming>
     |\  
-    | * d6f3724 - restructured url resolver in article_list macro (11 months ago) <tschmidt-dev>
-    | * c0d5f25 - fixed article_list macro sublist markup (11 months ago) <tschmidt-dev>
-    | * a7bbf18 - added Django 1.5 url syntax to macros plugin; added condition to avoid generating empty lists for each child in article_list macro (11 months ago) <tschmidt-dev>
-    | * 5eda878 - added wiki-article-sublist class to article_list macro template (11 months ago) <tschmidt-dev>
-    | * 3493af1 - added wiki-article-list class to article_list macro template (11 months ago) <tschmidt-dev>
-    | * 5a3c029 - added core macros plugin with initial article_list macro (11 months ago) <tschmidt-dev>
-    * |   919d45e - Merge pull request #104 from SacNaturalFoods/master (11 months ago) <benjaoming>
+    | * d6f3724 - restructured url resolver in article_list macro (12 months ago) <tschmidt-dev>
+    | * c0d5f25 - fixed article_list macro sublist markup (12 months ago) <tschmidt-dev>
+    | * a7bbf18 - added Django 1.5 url syntax to macros plugin; added condition to avoid generating empty lists for each child in article_list macro (12 months ago) <tschmidt-dev>
+    | * 5eda878 - added wiki-article-sublist class to article_list macro template (12 months ago) <tschmidt-dev>
+    | * 3493af1 - added wiki-article-list class to article_list macro template (12 months ago) <tschmidt-dev>
+    | * 5a3c029 - added core macros plugin with initial article_list macro (12 months ago) <tschmidt-dev>
+    * |   919d45e - Merge pull request #104 from SacNaturalFoods/master (12 months ago) <benjaoming>
     |\ \  
     | |/  
-    | * f14ecef - collapsed MARKDOWN_EXTENSIONS and MARKDOWN_SAFE_MODE settings into MARKDOWN_KWARGS (11 months ago) <tschmidt-dev>
-    * | f58974d - Update README.md (11 months ago) <benjaoming>
-    * | 4bf8769 - Update README.md (11 months ago) <benjaoming>
+    | * f14ecef - collapsed MARKDOWN_EXTENSIONS and MARKDOWN_SAFE_MODE settings into MARKDOWN_KWARGS (12 months ago) <tschmidt-dev>
+    * | f58974d - Update README.md (12 months ago) <benjaoming>
+    * | 4bf8769 - Update README.md (12 months ago) <benjaoming>
     * |   61e5952 - Merge branch 'master' of github.com:benjaoming/django-wiki (12 months ago) <benjaoming>
     |\ \  
     | * | 603898f - Update README.md (12 months ago) <benjaoming>
@@ -613,58 +626,58 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     | | |/  
     | | * 0f02092 - added MARKDOWN_SAFE_MODE setting (12 months ago) <tschmidt-dev>
     | | * 8ac9814 - fixed help plugin TOC syntax and added Tables section (12 months ago) <tschmidt-dev>
-    | * |   31562fd - Merge branch 'master' of github.com:benjaoming/django-wiki (12 months ago) <benjaoming>
+    | * |   31562fd - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year ago) <benjaoming>
     | |\ \  
     * | | | 68fc90c - Add settings for inheriting owner and group permissions and fix #99 (12 months ago) <benjaoming>
-    * | | |   b1b3aea - Merge branch 'master' of github.com:benjaoming/django-wiki (12 months ago) <benjaoming>
+    * | | |   b1b3aea - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year ago) <benjaoming>
     |\ \ \ \  
     | |/ / /  
     |/| / /   
     | |/ /    
-    | * | c21775d - Use Form Media for SelectWidgetBootstrap and update wiki_form templatetag (12 months ago) <benjaoming>
+    | * | c21775d - Use Form Media for SelectWidgetBootstrap and update wiki_form templatetag (1 year ago) <benjaoming>
     | |/  
-    * | 9c5f46d - Use Form Media for SelectWidgetBootstrap and update wiki_form templatetag Fix #95 (12 months ago) <benjaoming>
+    * | 9c5f46d - Use Form Media for SelectWidgetBootstrap and update wiki_form templatetag Fix #95 (1 year ago) <benjaoming>
     |/  
-    * efd8db8 - WARNING! May break your config: Clean up settings variale names in images and attachments plugins and use unified defaults. Issue #91. (12 months ago) <benjaoming>
-    *   6b9f346 - Merge pull request #92 from gluwa/master (12 months ago) <benjaoming>
+    * efd8db8 - WARNING! May break your config: Clean up settings variale names in images and attachments plugins and use unified defaults. Issue #91. (1 year ago) <benjaoming>
+    *   6b9f346 - Merge pull request #92 from gluwa/master (1 year ago) <benjaoming>
     |\  
-    | * 55a4a5b - in attachments plugin, append '.upload' to uploaded files only when settings.APPEND_EXTENSION is True. (12 months ago) <Tae-lim Oh>
-    | * 15a33ea - adding custom storage backend option to images plugin (12 months ago) <Tae-lim Oh>
+    | * 55a4a5b - in attachments plugin, append '.upload' to uploaded files only when settings.APPEND_EXTENSION is True. (1 year ago) <Tae-lim Oh>
+    | * 15a33ea - adding custom storage backend option to images plugin (1 year ago) <Tae-lim Oh>
     |/  
-    *   64a22a8 - Merge branch 'master' of github.com:benjaoming/django-wiki (12 months ago) <benjaoming>
+    *   64a22a8 - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year ago) <benjaoming>
     |\  
-    | * 5f90b18 - Update README.md (12 months ago) <benjaoming>
-    * | 453131e - add testproject template dir (12 months ago) <benjaoming>
-    * | 59567e3 - Error pages for test project (12 months ago) <benjaoming>
+    | * 5f90b18 - Update README.md (1 year ago) <benjaoming>
+    * | 453131e - add testproject template dir (1 year ago) <benjaoming>
+    * | 59567e3 - Error pages for test project (1 year ago) <benjaoming>
     |/  
-    * 9664ce1 - Add PIL to requirements.txt and remove Python 2.5 from travis (12 months ago) <benjaoming>
-    * 3607ea8 - test with manage.py (12 months ago) <benjaoming>
-    * 659d145 - fix double requirement (12 months ago) <benjaoming>
-    *   6c7f905 - Merge branch 'master' of github.com:benjaoming/django-wiki (12 months ago) <benjaoming>
+    * 9664ce1 - Add PIL to requirements.txt and remove Python 2.5 from travis (1 year ago) <benjaoming>
+    * 3607ea8 - test with manage.py (1 year ago) <benjaoming>
+    * 659d145 - fix double requirement (1 year ago) <benjaoming>
+    *   6c7f905 - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year ago) <benjaoming>
     |\  
-    | * 62d2c4f - Update README.md (12 months ago) <benjaoming>
-    * | 558d88c - fix pip argument for travis (12 months ago) <benjaoming>
+    | * 62d2c4f - Update README.md (1 year ago) <benjaoming>
+    * | 558d88c - fix pip argument for travis (1 year ago) <benjaoming>
     |/  
-    * 3b2aceb - travis config added (12 months ago) <benjaoming>
-    * 09cab11 - missing template load stm (12 months ago) <benjaoming>
-    * c14ee73 - Use JS to save article form data on all sidebar plugin forms (12 months ago) <benjaoming>
-    * 2e36575 - Scroll if there are many images, only warn about unsaved changes if there are in fact such (12 months ago) <benjaoming>
-    * fb40d08 - Avoid losing user data when a sidebar form is called and article contents have been modified #33 (12 months ago) <benjaoming>
-    * b9e95ef - Support for I10N - use timezone.now (12 months ago) <benjaoming>
-    * ab45a20 - Cleanup nicely when an image or attachment is deleted - remove the file and any empty directories #25 (12 months ago) <benjaoming>
-    * 36eb1f8 - Do not allow merging with a deleted revision #27 (12 months ago) <benjaoming>
-    * 652433f - Remove unused setting (12 months ago) <benjaoming>
-    * 8a010d8 - apply migrations to prepopulated test database (12 months ago) <benjaoming>
-    * 6eb99d2 - Account handling system should pass all django.contrib.auth test cases #86 (12 months ago) <benjaoming>
-    * ea2cd01 - Account handling system should pass all django.contrib.auth test cases #86 (12 months ago) <benjaoming>
-    * df59145 - Redirect for the built-in account handling when login is required + better err page. (12 months ago) <benjaoming>
-    * c805fee - Add link to forum/mailing list (1 year ago) <benjaoming>
-    * ac826e3 - sorl.thumbnail in INSTALLED_APPS + copy-paste friendly (1 year ago) <benjaoming>
-    * e8dcb97 - Update README.md (1 year ago) <benjaoming>
-    * bde97a5 - Update README.md (1 year ago) <benjaoming>
-    * 97734d0 - Update README.md (1 year ago) <benjaoming>
-    * f482b0c - Bumping to version 0.0.9 for new PyPi release (1 year ago) <benjaoming>
-    * 3add660 - Remove 'center' from javascript prompt help text (#88) (1 year, 1 month ago) <benjaoming>
+    * 3b2aceb - travis config added (1 year ago) <benjaoming>
+    * 09cab11 - missing template load stm (1 year ago) <benjaoming>
+    * c14ee73 - Use JS to save article form data on all sidebar plugin forms (1 year ago) <benjaoming>
+    * 2e36575 - Scroll if there are many images, only warn about unsaved changes if there are in fact such (1 year ago) <benjaoming>
+    * fb40d08 - Avoid losing user data when a sidebar form is called and article contents have been modified #33 (1 year ago) <benjaoming>
+    * b9e95ef - Support for I10N - use timezone.now (1 year ago) <benjaoming>
+    * ab45a20 - Cleanup nicely when an image or attachment is deleted - remove the file and any empty directories #25 (1 year ago) <benjaoming>
+    * 36eb1f8 - Do not allow merging with a deleted revision #27 (1 year ago) <benjaoming>
+    * 652433f - Remove unused setting (1 year ago) <benjaoming>
+    * 8a010d8 - apply migrations to prepopulated test database (1 year ago) <benjaoming>
+    * 6eb99d2 - Account handling system should pass all django.contrib.auth test cases #86 (1 year ago) <benjaoming>
+    * ea2cd01 - Account handling system should pass all django.contrib.auth test cases #86 (1 year ago) <benjaoming>
+    * df59145 - Redirect for the built-in account handling when login is required + better err page. (1 year ago) <benjaoming>
+    * c805fee - Add link to forum/mailing list (1 year, 1 month ago) <benjaoming>
+    * ac826e3 - sorl.thumbnail in INSTALLED_APPS + copy-paste friendly (1 year, 1 month ago) <benjaoming>
+    * e8dcb97 - Update README.md (1 year, 1 month ago) <benjaoming>
+    * bde97a5 - Update README.md (1 year, 1 month ago) <benjaoming>
+    * 97734d0 - Update README.md (1 year, 1 month ago) <benjaoming>
+    * f482b0c - Bumping to version 0.0.9 for new PyPi release (1 year, 1 month ago) <benjaoming>
+    * 3add660 - Remove 'center' from javascript prompt help text (#88) (1 year, 2 months ago) <benjaoming>
     * 2c0b35a - Add local settings to testproject (1 year, 2 months ago) <benjaoming>
     * 82b4e32 - #71 and #87 - put the 'get' by path pattern at the very end of all patterns (1 year, 2 months ago) <benjaoming>
     * 9604209 - #71 - missing pattern 'get' in new class based urls (1 year, 2 months ago) <benjaoming>
@@ -679,56 +692,56 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     * | c93b318 - Be explicit about application order (#84) (1 year, 2 months ago) <benjaoming>
     * |   ceb705b - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 2 months ago) <benjaoming>
     |\ \  
-    | * | 6704790 - Retry: Fix settings.py link (#81) (1 year, 2 months ago) <benjaoming>
-    | * | f84a092 - Fix settings.py link (#81) (1 year, 2 months ago) <benjaoming>
-    | * | d586040 - Fix settings.py link (1 year, 2 months ago) <benjaoming>
+    | * | 6704790 - Retry: Fix settings.py link (#81) (1 year, 3 months ago) <benjaoming>
+    | * | f84a092 - Fix settings.py link (#81) (1 year, 3 months ago) <benjaoming>
+    | * | d586040 - Fix settings.py link (1 year, 3 months ago) <benjaoming>
     * | | 32591c2 - Regression from adding spam protection, missing argument in when view class Preview initialized EditForm (#83) (1 year, 2 months ago) <benjaoming>
     |/ /  
-    * | 2cb3950 - Move all javascript to load at the bottom of the page and ensure only to add javascript inside Sekizai addtoblock tag. (#54) (1 year, 2 months ago) <benjaoming>
-    * | 109421e - Fix markdown extension for images to allow no align:xx specified and use bootstrap pull-left and pull-right. Don't allow center alignment. (#65) (1 year, 2 months ago) <benjaoming>
-    * | 1834071 - Add spam/bot protection by verifying user session and ip_address and check the number of recent revisions (#72) Add global setting to disable anonymous article creation (#72) (1 year, 2 months ago) <benjaoming>
-    * | ecbacc8 - Count number of occurences of the same message and display "x times" in the notification list instead of duplicate messages. (1 year, 2 months ago) <benjaoming>
-    * | ea71c5c - Add warning on Edit page if user is not logged in w/ link to login page and redirect back to edit page (#55) (1 year, 2 months ago) <benjaoming>
-    * | 58cb725 - eh..remove alert() (1 year, 2 months ago) <benjaoming>
-    * | ce1ff2e - Setting Colorbox.js width and height (#69) and adding captions. (1 year, 2 months ago) <benjaoming>
-    * |   2458217 - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 2 months ago) <benjaoming>
+    * | 2cb3950 - Move all javascript to load at the bottom of the page and ensure only to add javascript inside Sekizai addtoblock tag. (#54) (1 year, 3 months ago) <benjaoming>
+    * | 109421e - Fix markdown extension for images to allow no align:xx specified and use bootstrap pull-left and pull-right. Don't allow center alignment. (#65) (1 year, 3 months ago) <benjaoming>
+    * | 1834071 - Add spam/bot protection by verifying user session and ip_address and check the number of recent revisions (#72) Add global setting to disable anonymous article creation (#72) (1 year, 3 months ago) <benjaoming>
+    * | ecbacc8 - Count number of occurences of the same message and display "x times" in the notification list instead of duplicate messages. (1 year, 3 months ago) <benjaoming>
+    * | ea71c5c - Add warning on Edit page if user is not logged in w/ link to login page and redirect back to edit page (#55) (1 year, 3 months ago) <benjaoming>
+    * | 58cb725 - eh..remove alert() (1 year, 3 months ago) <benjaoming>
+    * | ce1ff2e - Setting Colorbox.js width and height (#69) and adding captions. (1 year, 3 months ago) <benjaoming>
+    * |   2458217 - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 3 months ago) <benjaoming>
     |\ \  
-    | * | cb3d251 - Ensure that CreateForm fails when slug field is longer than the maximum allowed slug length (#54). (1 year, 2 months ago) <benjaoming>
-    * | | 1dbd51f - Ensure that CreateForm fails when slug field is longer than the maximum allowed slug length (#57) (1 year, 2 months ago) <benjaoming>
+    | * | cb3d251 - Ensure that CreateForm fails when slug field is longer than the maximum allowed slug length (#54). (1 year, 3 months ago) <benjaoming>
+    * | | 1dbd51f - Ensure that CreateForm fails when slug field is longer than the maximum allowed slug length (#57) (1 year, 3 months ago) <benjaoming>
     |/ /  
-    * | 393aa34 - Adding check on article locked for attachments. (#74) - Also cleaning up attachment list and removing forms when article is locked. Adding template filter is_locked (1 year, 2 months ago) <benjaoming>
-    * | 9d801fb - Adding Bootstrap 2.2.0 (1 year, 2 months ago) <benjaoming>
-    * |   e948b73 - Merge pull request #79 from avtobiff/update-readme-dependencies (1 year, 2 months ago) <benjaoming>
+    * | 393aa34 - Adding check on article locked for attachments. (#74) - Also cleaning up attachment list and removing forms when article is locked. Adding template filter is_locked (1 year, 3 months ago) <benjaoming>
+    * | 9d801fb - Adding Bootstrap 2.2.0 (1 year, 3 months ago) <benjaoming>
+    * |   e948b73 - Merge pull request #79 from avtobiff/update-readme-dependencies (1 year, 3 months ago) <benjaoming>
     |\ \  
-    | * | f31b6d4 - Correct django dependency invariant (1 year, 2 months ago) <Per Andersson>
-    | * | 78fa3a8 - Increase django-mptt dependency version (1 year, 2 months ago) <Per Andersson>
+    | * | f31b6d4 - Correct django dependency invariant (1 year, 3 months ago) <Per Andersson>
+    | * | 78fa3a8 - Increase django-mptt dependency version (1 year, 3 months ago) <Per Andersson>
     |/ /  
-    * |   f3f667e - Merge pull request #75 from jdcaballero/master (1 year, 2 months ago) <benjaoming>
+    * |   f3f667e - Merge pull request #75 from jdcaballero/master (1 year, 3 months ago) <benjaoming>
     |\ \  
-    | * | 0f422c0 - Update wiki/plugins/notifications/forms.py (1 year, 2 months ago) <jdcaballero>
+    | * | 0f422c0 - Update wiki/plugins/notifications/forms.py (1 year, 3 months ago) <jdcaballero>
     |/ /  
-    * | e7d64e1 - Never return a proxy object from __unicode__ ! (#73) (1 year, 2 months ago) <benjaoming>
-    * |   46fc152 - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 2 months ago) <benjaoming>
+    * | e7d64e1 - Never return a proxy object from __unicode__ ! (#73) (1 year, 3 months ago) <benjaoming>
+    * |   46fc152 - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 3 months ago) <benjaoming>
     |\ \  
     | |/  
     | *   2288efd - Merge pull request #64 from webdevelop/master (1 year, 3 months ago) <benjaoming>
     | |\  
     | | * d77930c - Greedy regex algorithm (1 year, 3 months ago) <Vladyslav>
-    * | | a479748 - Never return a proxy object from __unicode__ ! (#73) (1 year, 2 months ago) <benjaoming>
+    * | | a479748 - Never return a proxy object from __unicode__ ! (#73) (1 year, 3 months ago) <benjaoming>
     |/ /  
     * | 0c8a554 - Issue #68 - Add sorl-thumbnail to dependencies. Furthermore, add >=0.5.3 to django-mptt which has caused some reports. Read requirements.txt into setup.py to avoid hard coding and mismatches. Create 0.0.2 release which is not broken because README.md was missing from distribution file. (1 year, 3 months ago) <benjaoming>
     * | 5db399c - Issue #67 - left joins caused by m2m fields sometimes result in duplicate rows, applying distinct() (1 year, 3 months ago) <benjaoming>
     * | 0850915 - Fix Issue #66 (1 year, 3 months ago) <benjaoming>
-    * | d08301f - Fix transaction support for uploading attachments (1 year, 3 months ago) <benjaoming>
-    * | ee08a7f - Fix #60 - do not allow empty image form fields even though the model should handle it. (1 year, 3 months ago) <benjaoming>
-    * | 520e123 - Fixing long titles in notifications and display total count of notifications instead of just a truncated number. (1 year, 3 months ago) <benjaoming>
-    * | a886040 - Cosmetic changes to fix #38 - but otherwise there is no rules for URL lengths other than IE setting the lower limit at 2048 characters which should hardly annoy anyone. (1 year, 3 months ago) <benjaoming>
-    * | 8884709 - Remove redundant table (1 year, 3 months ago) <benjaoming>
-    * | bbd4234 - Issue#50 - make using send_file configurable to allow for remote storage backends such as S3. (1 year, 3 months ago) <benjaoming>
-    * |   1082aef - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 3 months ago) <benjaoming>
+    * | d08301f - Fix transaction support for uploading attachments (1 year, 4 months ago) <benjaoming>
+    * | ee08a7f - Fix #60 - do not allow empty image form fields even though the model should handle it. (1 year, 4 months ago) <benjaoming>
+    * | 520e123 - Fixing long titles in notifications and display total count of notifications instead of just a truncated number. (1 year, 4 months ago) <benjaoming>
+    * | a886040 - Cosmetic changes to fix #38 - but otherwise there is no rules for URL lengths other than IE setting the lower limit at 2048 characters which should hardly annoy anyone. (1 year, 4 months ago) <benjaoming>
+    * | 8884709 - Remove redundant table (1 year, 4 months ago) <benjaoming>
+    * | bbd4234 - Issue#50 - make using send_file configurable to allow for remote storage backends such as S3. (1 year, 4 months ago) <benjaoming>
+    * |   1082aef - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 4 months ago) <benjaoming>
     |\ \  
-    | * | 0bc5611 - Update README.md (1 year, 3 months ago) <benjaoming>
-    | * |   4e2ced2 - Merge pull request #62 from webdevelop/master (1 year, 3 months ago) <benjaoming>
+    | * | 0bc5611 - Update README.md (1 year, 4 months ago) <benjaoming>
+    | * |   4e2ced2 - Merge pull request #62 from webdevelop/master (1 year, 4 months ago) <benjaoming>
     | |\ \  
     | | |/  
     | | * e0a3b99 - Uncode filename in US-ASCII format, needable for russian and other language (1 year, 4 months ago) <Vladyslav>
@@ -740,48 +753,48 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     | | * 0fd815b - small fix for extra hash (1 year, 4 months ago) <pypetey>
     | | * 3183706 - Fix for line 561 error: 'msgid' format string with unnamed arguments cannot be properly localized: The translator cannot reorder the arguments. Please consider using a format string with named arguments, and a mapping instead of a tuple for the arguments. (1 year, 4 months ago) <pypetey>
     | |/  
-    * | 2a9167a - Add support for counting duplicate notifications instead of repeating the same. (1 year, 3 months ago) <benjaoming>
+    * | 2a9167a - Add support for counting duplicate notifications instead of repeating the same. (1 year, 4 months ago) <benjaoming>
     |/  
-    * 0fa8bad - Use safe preprocessors for attachments and images plugin. Fix Issue #39. Also use a template to render attachments html. (1 year, 4 months ago) <benjaoming>
-    * 8d1dd37 - Updating model chart to reflect current project status (1 year, 4 months ago) <benjaoming>
-    * 9503fac - Issue #50 do not use full paths because remote storage does not implement this. (1 year, 4 months ago) <benjaoming>
-    * 8f64202 - Issue #48: Searches should be case insensitive (1 year, 4 months ago) <benjaoming>
-    * b68f0b5 - More modifications for pypi, first 0.0.1 released - pip install wiki (1 year, 4 months ago) <benjaoming>
-    * 996800c - Adding a MANIFEST for pypi distribution (1 year, 4 months ago) <benjaoming>
-    * da4e421 - Fixing issues with PYPI compatibility (1 year, 4 months ago) <benjaoming>
-    *   8a589bb - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 4 months ago) <benjaoming>
+    * 0fa8bad - Use safe preprocessors for attachments and images plugin. Fix Issue #39. Also use a template to render attachments html. (1 year, 5 months ago) <benjaoming>
+    * 8d1dd37 - Updating model chart to reflect current project status (1 year, 5 months ago) <benjaoming>
+    * 9503fac - Issue #50 do not use full paths because remote storage does not implement this. (1 year, 5 months ago) <benjaoming>
+    * 8f64202 - Issue #48: Searches should be case insensitive (1 year, 5 months ago) <benjaoming>
+    * b68f0b5 - More modifications for pypi, first 0.0.1 released - pip install wiki (1 year, 5 months ago) <benjaoming>
+    * 996800c - Adding a MANIFEST for pypi distribution (1 year, 5 months ago) <benjaoming>
+    * da4e421 - Fixing issues with PYPI compatibility (1 year, 5 months ago) <benjaoming>
+    *   8a589bb - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 5 months ago) <benjaoming>
     |\  
-    | *   c7aa2e1 - Merge pull request #40 from uAnywhere/master (1 year, 4 months ago) <benjaoming>
+    | *   c7aa2e1 - Merge pull request #40 from uAnywhere/master (1 year, 5 months ago) <benjaoming>
     | |\  
-    | | * 4e6cdda - Minor optimisation to ACLs (use .exists() instead of bool() because it's faster), fix an issue on Django 1.5 where EmptyQuerySet has no method select_related_common() (1 year, 4 months ago) <Michael Farrell>
+    | | * 4e6cdda - Minor optimisation to ACLs (use .exists() instead of bool() because it's faster), fix an issue on Django 1.5 where EmptyQuerySet has no method select_related_common() (1 year, 5 months ago) <Michael Farrell>
     | |/  
-    * | 3a31f2c - Do not conditionally include login, logout and signup URLs in urlpatterns. Handle WIKI_ACCOUNT_HANDLING inside views. Issue #43. (1 year, 4 months ago) <benjaoming>
+    * | 3a31f2c - Do not conditionally include login, logout and signup URLs in urlpatterns. Handle WIKI_ACCOUNT_HANDLING inside views. Issue #43. (1 year, 5 months ago) <benjaoming>
     |/  
-    *   76b0698 - Merge branch 'edx_release' (1 year, 4 months ago) <benjaoming>
+    *   76b0698 - Merge branch 'edx_release' (1 year, 5 months ago) <benjaoming>
     |\  
-    | * 7fad1ac - (origin/edx_release) Removing settings from links plugin (1 year, 4 months ago) <benjaoming>
-    | * d489d13 - Merging with edx branch, fixing link plugin to not use live_lookups (it's meaningless because whole articles are normally cached and therefore, links are not resolved at every article view). Also, settings for the links plugin were wrongly placed in the main settings file. (1 year, 4 months ago) <benjaoming>
-    | *   72faa3b - Merge pull request #31 from rocha/edx_release (1 year, 4 months ago) <benjaoming>
+    | * 7fad1ac - (origin/edx_release) Removing settings from links plugin (1 year, 5 months ago) <benjaoming>
+    | * d489d13 - Merging with edx branch, fixing link plugin to not use live_lookups (it's meaningless because whole articles are normally cached and therefore, links are not resolved at every article view). Also, settings for the links plugin were wrongly placed in the main settings file. (1 year, 5 months ago) <benjaoming>
+    | *   72faa3b - Merge pull request #31 from rocha/edx_release (1 year, 5 months ago) <benjaoming>
     | |\  
-    | | * cd1c23e - Fixed WikiPath regexp. It was incorrectly matching [Title](Link) on the same line. (1 year, 4 months ago) <Carlos Andrés Rocha>
+    | | * cd1c23e - Fixed WikiPath regexp. It was incorrectly matching [Title](Link) on the same line. (1 year, 5 months ago) <Carlos Andrés Rocha>
     | |/  
-    | * 7e42bce - Changed behavior of wikilinks extension to optionally disable database and prefer to stay at a certain level. (1 year, 4 months ago) <Bridger Maxwell>
-    | * f00b7d3 - Fixed bug where non-found wiki links ignored base url. (1 year, 4 months ago) <Bridger Maxwell>
+    | * 7e42bce - Changed behavior of wikilinks extension to optionally disable database and prefer to stay at a certain level. (1 year, 5 months ago) <Bridger Maxwell>
+    | * f00b7d3 - Fixed bug where non-found wiki links ignored base url. (1 year, 5 months ago) <Bridger Maxwell>
     | * 533c7fc - Dir links are now prominently view links with arrows for viewing children. (1 year, 5 months ago) <Bridger Maxwell>
     | * d1b97e2 - Fixed bug for calling .active() on empty query sets. (1 year, 5 months ago) <Bridger Maxwell>
     | * 50c08a3 - Added setting for disabling SelectWidgetBootstrap. (1 year, 5 months ago) <Bridger Maxwell>
     | * 3576a2d - Allowing periods in slug for wikilinks. (1 year, 5 months ago) <Bridger Maxwell>
-    * |   81bf613 - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 4 months ago) <benjaoming>
+    * |   81bf613 - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 5 months ago) <benjaoming>
     |\ \  
-    | * | 7aab68a - Adding ideas section. (1 year, 4 months ago) <benjaoming>
-    * | | bb87802 - unchanged, git detects change but shows no diff (1 year, 4 months ago) <benjaoming>
-    * | | 0fc9b2d - Important fix! Remove HTML tags from Markdown code. (1 year, 4 months ago) <benjaoming>
-    * | | 4a58ac1 - Adding clearfix (1 year, 4 months ago) <benjaoming>
+    | * | 7aab68a - Adding ideas section. (1 year, 5 months ago) <benjaoming>
+    * | | bb87802 - unchanged, git detects change but shows no diff (1 year, 5 months ago) <benjaoming>
+    * | | 0fc9b2d - Important fix! Remove HTML tags from Markdown code. (1 year, 5 months ago) <benjaoming>
+    * | | 4a58ac1 - Adding clearfix (1 year, 5 months ago) <benjaoming>
     |/ /  
-    * | 98aaee3 - Issue #32, yes, clearly a typo here. Don't know why it was working, but replaced with super(RevisionForm.. and tested. (1 year, 4 months ago) <benjaoming>
-    * |   7435980 - Merge pull request #35 from rfurman/master (1 year, 4 months ago) <benjaoming>
+    * | 98aaee3 - Issue #32, yes, clearly a typo here. Don't know why it was working, but replaced with super(RevisionForm.. and tested. (1 year, 5 months ago) <benjaoming>
+    * |   7435980 - Merge pull request #35 from rfurman/master (1 year, 5 months ago) <benjaoming>
     |\ \  
-    | * | 60142fa - Fixed image captions by resetting caption_lines for each new image.  Before, the n-th image would have the first n captions concatenated together. (1 year, 4 months ago) <Ralph Furmaniak>
+    | * | 60142fa - Fixed image captions by resetting caption_lines for each new image.  Before, the n-th image would have the first n captions concatenated together. (1 year, 5 months ago) <Ralph Furmaniak>
     |/ /  
     * |   60c83ee - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 5 months ago) <Bridger Maxwell>
     |\ \  
@@ -1044,50 +1057,50 @@ Compiled on: Mon Jan  6 23:50:32 CET 2014
     * 1a0396d - Adding from old feature list (1 year, 5 months ago) <benjaoming>
     * 5e3b668 - Add GPLv3 license, clean up code (1 year, 5 months ago) <benjaoming>
     * 8408f01 - More class-based views. Mixin class for Article-related views handling permissions etc. More complex plugin structure for easy creation of plugins with very easy integration in the article tab menu etc. (1 year, 5 months ago) <benjaoming>
-    * fa4af85 - Error on saving revisions for anonymous users (1 year, 5 months ago) <benjaoming>
-    * 64a20e8 - Adding notifications for article edits and creations (1 year, 5 months ago) <benjaoming>
-    * 700e466 - Fixing js bug in SelectWidgetBootstrap (1 year, 5 months ago) <benjaoming>
-    * 4162909 - Fix Issue #7 (in setup.py) + Add forms in settings tab, save new permissions and notification preferences (1 year, 5 months ago) <benjaoming>
-    * 15a363d - Detection of editing conflicts, ie. concurrent article edits. If the revision number has changed while editing, warn the user and merge the user's content with the new revision. (1 year, 5 months ago) <benjaoming>
-    * 9d92e96 - Updating the TODO (1 year, 5 months ago) <benjaoming>
-    * 68e6c32 - added text editor backup files to gitignore; fix url tags so they are django 1.3-style, so it works properly with django 1.5 (which requires it) (1 year, 5 months ago) <Michael Farrell>
-    * 3500999 - django_notify in wiki self-check on INSTALLED_APPS and a better README.md (1 year, 5 months ago) <benjaoming>
-    * acff0fe - Update django_notify/README (1 year, 5 months ago) <benjaoming>
-    * 083b56d - Update README.md (1 year, 5 months ago) <benjaoming>
-    * 9dda155 - Update README.md (1 year, 5 months ago) <benjaoming>
-    * 56ef8e6 - Update README.md (1 year, 5 months ago) <benjaoming>
-    * 4ede9c8 - Creating new notification application django_notify and adding support for plugin registration and hooking additional forms into the settings page, such as notification settings for articles. (1 year, 5 months ago) <benjaoming>
-    * 99041d5 - Redirecting if article does not exist, add user and ip_address to new articles (1 year, 5 months ago) <benjaoming>
-    * efd542a - Create function added (1 year, 5 months ago) <benjaoming>
-    * b75d893 - Diffs also display log messages and title changes (1 year, 5 months ago) <benjaoming>
-    * 37b1cd5 - Pressing the final merge button now works and puts an automatic log entry (1 year, 5 months ago) <benjaoming>
-    *   83394ad - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 5 months ago) <benjaoming>
+    * fa4af85 - Error on saving revisions for anonymous users (1 year, 6 months ago) <benjaoming>
+    * 64a20e8 - Adding notifications for article edits and creations (1 year, 6 months ago) <benjaoming>
+    * 700e466 - Fixing js bug in SelectWidgetBootstrap (1 year, 6 months ago) <benjaoming>
+    * 4162909 - Fix Issue #7 (in setup.py) + Add forms in settings tab, save new permissions and notification preferences (1 year, 6 months ago) <benjaoming>
+    * 15a363d - Detection of editing conflicts, ie. concurrent article edits. If the revision number has changed while editing, warn the user and merge the user's content with the new revision. (1 year, 6 months ago) <benjaoming>
+    * 9d92e96 - Updating the TODO (1 year, 6 months ago) <benjaoming>
+    * 68e6c32 - added text editor backup files to gitignore; fix url tags so they are django 1.3-style, so it works properly with django 1.5 (which requires it) (1 year, 6 months ago) <Michael Farrell>
+    * 3500999 - django_notify in wiki self-check on INSTALLED_APPS and a better README.md (1 year, 6 months ago) <benjaoming>
+    * acff0fe - Update django_notify/README (1 year, 6 months ago) <benjaoming>
+    * 083b56d - Update README.md (1 year, 6 months ago) <benjaoming>
+    * 9dda155 - Update README.md (1 year, 6 months ago) <benjaoming>
+    * 56ef8e6 - Update README.md (1 year, 6 months ago) <benjaoming>
+    * 4ede9c8 - Creating new notification application django_notify and adding support for plugin registration and hooking additional forms into the settings page, such as notification settings for articles. (1 year, 6 months ago) <benjaoming>
+    * 99041d5 - Redirecting if article does not exist, add user and ip_address to new articles (1 year, 6 months ago) <benjaoming>
+    * efd542a - Create function added (1 year, 6 months ago) <benjaoming>
+    * b75d893 - Diffs also display log messages and title changes (1 year, 6 months ago) <benjaoming>
+    * 37b1cd5 - Pressing the final merge button now works and puts an automatic log entry (1 year, 6 months ago) <benjaoming>
+    *   83394ad - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 6 months ago) <benjaoming>
     |\  
-    | * 9360e1d - Update README.md (1 year, 5 months ago) <benjaoming>
-    | * dc3e415 - Update README.md (1 year, 5 months ago) <benjaoming>
-    * | e19ec3a - Viewing diffs and merging revisions. (1 year, 5 months ago) <benjaoming>
+    | * 9360e1d - Update README.md (1 year, 6 months ago) <benjaoming>
+    | * dc3e415 - Update README.md (1 year, 6 months ago) <benjaoming>
+    * | e19ec3a - Viewing diffs and merging revisions. (1 year, 6 months ago) <benjaoming>
     |/  
-    * 327ff0c - Issue #4 and #2 (1 year, 5 months ago) <benjaoming>
-    *   06d06ce - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 5 months ago) <benjaoming>
+    * 327ff0c - Issue #4 and #2 (1 year, 6 months ago) <benjaoming>
+    *   06d06ce - Merge branch 'master' of github.com:benjaoming/django-wiki (1 year, 6 months ago) <benjaoming>
     |\  
-    | * b096e34 - Update README.md (1 year, 5 months ago) <benjaoming>
-    | * 60bc647 - Adding sekizai dep. (1 year, 5 months ago) <benjaoming>
-    * | 750f6b4 - Adding history page, first class-based view, saving pointer to previous revision, better more strict handling of URLS (must always end with a /, except the root which must be "") (1 year, 5 months ago) <benjaoming>
+    | * b096e34 - Update README.md (1 year, 6 months ago) <benjaoming>
+    | * 60bc647 - Adding sekizai dep. (1 year, 6 months ago) <benjaoming>
+    * | 750f6b4 - Adding history page, first class-based view, saving pointer to previous revision, better more strict handling of URLS (must always end with a /, except the root which must be "") (1 year, 6 months ago) <benjaoming>
     |/  
-    * 8294826 - A few deployment details (1 year, 5 months ago) <benjaoming>
-    * 58cf1a3 - Adding edit page, preview function and MORE. South migrations will be added back soon. (1 year, 5 months ago) <benjaoming>
-    * dba6f82 - Adding template tags, bootstrap front end, creation of first root article, template tags for rendering (1 year, 5 months ago) <benjaoming>
-    * 458bbd2 - Initial plugin and editor structure and base classes for extending MarkItUp editor in admin Creating images and attachments as plugins (1 year, 5 months ago) <benjaoming>
-    * 2940142 - More work on models. Add Attachment model, and let attachments pass through a revision system. (1 year, 5 months ago) <benjaoming>
-    * 322b5a6 - Finalizing URLPath as an MPTT model and generic relations on Articles (1 year, 5 months ago) <benjaoming>
-    * 83fe3d4 - More on models. Not done yet. (1 year, 5 months ago) <benjaoming>
-    * 30fb1ec - Begging to implement models (1 year, 5 months ago) <benjaoming>
-    * 330c772 - Django south administration and URL patterns with default namespace (1 year, 5 months ago) <benjaoming>
-    * ef2b1ec - Documentation with sphinx (1 year, 5 months ago) <benjaoming>
-    * 357d9fa - Adding install instructions and setup.py (1 year, 5 months ago) <benjaoming>
-    * 692aeae - Prepopulated test project. (1 year, 5 months ago) <benjaoming>
-    * a3fe227 - typos (1 year, 5 months ago) <benjaoming>
-    * 0e24a0b - typos (1 year, 5 months ago) <benjaoming>
-    * de6c30b - Project skeleton, README with explanation of project (1 year, 5 months ago) <benjaoming>
+    * 8294826 - A few deployment details (1 year, 6 months ago) <benjaoming>
+    * 58cf1a3 - Adding edit page, preview function and MORE. South migrations will be added back soon. (1 year, 6 months ago) <benjaoming>
+    * dba6f82 - Adding template tags, bootstrap front end, creation of first root article, template tags for rendering (1 year, 6 months ago) <benjaoming>
+    * 458bbd2 - Initial plugin and editor structure and base classes for extending MarkItUp editor in admin Creating images and attachments as plugins (1 year, 6 months ago) <benjaoming>
+    * 2940142 - More work on models. Add Attachment model, and let attachments pass through a revision system. (1 year, 6 months ago) <benjaoming>
+    * 322b5a6 - Finalizing URLPath as an MPTT model and generic relations on Articles (1 year, 6 months ago) <benjaoming>
+    * 83fe3d4 - More on models. Not done yet. (1 year, 6 months ago) <benjaoming>
+    * 30fb1ec - Begging to implement models (1 year, 6 months ago) <benjaoming>
+    * 330c772 - Django south administration and URL patterns with default namespace (1 year, 6 months ago) <benjaoming>
+    * ef2b1ec - Documentation with sphinx (1 year, 6 months ago) <benjaoming>
+    * 357d9fa - Adding install instructions and setup.py (1 year, 6 months ago) <benjaoming>
+    * 692aeae - Prepopulated test project. (1 year, 6 months ago) <benjaoming>
+    * a3fe227 - typos (1 year, 6 months ago) <benjaoming>
+    * 0e24a0b - typos (1 year, 6 months ago) <benjaoming>
+    * de6c30b - Project skeleton, README with explanation of project (1 year, 6 months ago) <benjaoming>
     * aac85a2 - Update master (1 year, 6 months ago) <benjaoming>
     * ad97277 - Initial commit (1 year, 6 months ago) <benjaoming>
