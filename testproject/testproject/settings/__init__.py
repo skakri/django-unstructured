@@ -78,7 +78,6 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     'django.core.context_processors.debug',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
-    'sekizai.context_processors.sekizai',
 ]
 
 INSTALLED_APPS = [
@@ -92,7 +91,6 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.admindocs',
     'south',
-    'sekizai',
     'sorl.thumbnail',
     'wiki',
     'wiki.plugins.macros',

@@ -12,14 +12,6 @@ wiki.plugins.haystack.search_indexes module
     :undoc-members:
     :show-inheritance:
 
-wiki.plugins.haystack.views module
-----------------------------------
-
-.. automodule:: wiki.plugins.haystack.views
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 
 Module contents
 ---------------

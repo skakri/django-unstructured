@@ -98,7 +98,6 @@ maintain the order due to database relational constraints:
         'django.contrib.humanize',
         'south',
         'mptt',
-        'sekizai',
         'sorl.thumbnail',
         'wiki',
         'wiki.plugins.attachments',

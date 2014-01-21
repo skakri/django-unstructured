@@ -52,14 +52,6 @@ wiki.plugins.images.settings module
     :undoc-members:
     :show-inheritance:
 
-wiki.plugins.images.views module
---------------------------------
-
-.. automodule:: wiki.plugins.images.views
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 wiki.plugins.images.wiki_plugin module
 --------------------------------------
 

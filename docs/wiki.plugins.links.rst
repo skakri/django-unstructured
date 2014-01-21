@@ -27,14 +27,6 @@ wiki.plugins.links.settings module
     :undoc-members:
     :show-inheritance:
 
-wiki.plugins.links.views module
--------------------------------
-
-.. automodule:: wiki.plugins.links.views
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 wiki.plugins.links.wiki_plugin module
 -------------------------------------
 

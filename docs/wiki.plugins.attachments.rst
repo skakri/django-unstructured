@@ -51,22 +51,6 @@ wiki.plugins.attachments.settings module
     :undoc-members:
     :show-inheritance:
 
-wiki.plugins.attachments.urls module
-------------------------------------
-
-.. automodule:: wiki.plugins.attachments.urls
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-wiki.plugins.attachments.views module
--------------------------------------
-
-.. automodule:: wiki.plugins.attachments.views
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 wiki.plugins.attachments.wiki_plugin module
 -------------------------------------------
 
