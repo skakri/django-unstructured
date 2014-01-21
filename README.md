@@ -9,7 +9,7 @@ Django-wiki-base is a lightwight, stripped down version of [django-wiki](https:/
 Current goals
 -------------
 
-* Strip all unneeded stuff - templates, views
+* Strip all unneeded stuff - views, etc.
 * Transform Article to use "block system" (think MediaWiki) from which article menu could be created
 * Add Article `deleted` flag
 * Markdown optional (there isn't any useable WYSIWYG Markdown editor)
