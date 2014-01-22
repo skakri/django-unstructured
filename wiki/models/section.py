@@ -198,9 +198,16 @@ class SectionRevision(BaseRevisionMixin, models.Model):
         unique_together = ('section', 'revision_number')
 
 
-#class SectionTree(MPTTModel):
-#    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
-#
-#    class MPTTMeta:
-#        order_insertion_by = ['name']
+class SectionNode(MPTTModel):
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
+    section = models.ForeignKey(Section, related_name='node')
 
+    slug = models.SlugField(verbose_name=_(u'slug'), null=True, blank=True,
+                            max_length=50)
+
+    class MPTTMeta:
+        pass
+
+    class Meta:
+        unique_together = ('parent', 'slug')
+        app_label = settings.APP_LABEL
