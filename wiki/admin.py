@@ -62,7 +62,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 class URLPathAdmin(MPTTModelAdmin):
     inlines = [ArticleObjectAdmin]
-    list_filter = ('site', 'articles__article__current_revision__deleted',
+    list_filter = ('site', 'articles__article__deleted',
                    'articles__article__created',
                    'articles__article__modified')
     list_display = ('__unicode__', 'article', 'get_created')

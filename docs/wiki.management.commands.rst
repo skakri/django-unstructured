@@ -4,9 +4,6 @@ wiki.management.commands package
 Submodules
 ----------
 
-wiki.management.commands.wikiviz module
----------------------------------------
-
 .. automodule:: wiki.management.commands.wikiviz
     :members:
     :undoc-members:

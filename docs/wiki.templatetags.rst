@@ -4,9 +4,6 @@ wiki.templatetags package
 Submodules
 ----------
 
-wiki.templatetags.wiki_tags module
-----------------------------------
-
 .. automodule:: wiki.templatetags.wiki_tags
     :members:
     :undoc-members:

@@ -4,9 +4,6 @@ wiki.plugins.haystack package
 Submodules
 ----------
 
-wiki.plugins.haystack.search_indexes module
--------------------------------------------
-
 .. automodule:: wiki.plugins.haystack.search_indexes
     :members:
     :undoc-members:

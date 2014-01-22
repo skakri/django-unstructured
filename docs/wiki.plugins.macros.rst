@@ -12,16 +12,10 @@ Subpackages
 Submodules
 ----------
 
-wiki.plugins.macros.settings module
------------------------------------
-
 .. automodule:: wiki.plugins.macros.settings
     :members:
     :undoc-members:
     :show-inheritance:
-
-wiki.plugins.macros.wiki_plugin module
---------------------------------------
 
 .. automodule:: wiki.plugins.macros.wiki_plugin
     :members:

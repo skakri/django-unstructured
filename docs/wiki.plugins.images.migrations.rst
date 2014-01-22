@@ -4,9 +4,6 @@ wiki.plugins.images.migrations package
 Submodules
 ----------
 
-wiki.plugins.images.migrations.0001_initial module
---------------------------------------------------
-
 .. automodule:: wiki.plugins.images.migrations.0001_initial
     :members:
     :undoc-members:

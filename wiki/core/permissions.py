@@ -1,92 +1,92 @@
 from wiki.conf import settings
 
 ###############################
-# ARTICLE PERMISSION HANDLING #
+# TARGET PERMISSION HANDLING #
 ###############################
 #
 # All functions are:
-#   can_something(article, user)
+#   can_something(target, user)
 #      => True/False
 #
 # All functions can be replaced by pointing their relevant
-# settings variable in wiki.conf.settings to a callable(article, user)
+# settings variable in wiki.conf.settings to a callable(target, user)
 
-def can_read(article, user):
+def can_read(target, user):
     if callable(settings.CAN_READ):
-        return settings.CAN_READ(article, user)
+        return settings.CAN_READ(target, user)
     else:
-        # Deny reading access to deleted articles if user has no delete access
-        article_is_deleted = article.current_revision and article.current_revision.deleted
-        if article_is_deleted and not article.can_delete(user):
+        # Deny reading access to deleted entities if user has no delete access
+        is_deleted = target.current_revision and target.deleted
+        if is_deleted and not target.can_delete(user):
             return False
         
         # Check access for other users...
         if user.is_anonymous() and not settings.ANONYMOUS:
             return False
-        elif article.other_read:
+        elif target.other_read:
             return True
         elif user.is_anonymous():
             return  False
-        if user == article.owner:
+        if user == target.owner:
             return True
-        if article.group_read:
-            if article.group and user.groups.filter(id=article.group.id).exists():
+        if target.group_read:
+            if target.group and user.groups.filter(id=target.group.id).exists():
                 return True
-        if article.can_moderate(user):
+        if target.can_moderate(user):
             return True
         return False
         
-def can_write(article, user):
+def can_write(target, user):
     if callable(settings.CAN_WRITE):
-        return settings.CAN_WRITE(article, user)
+        return settings.CAN_WRITE(target, user)
     # Check access for other users...
     if user.is_anonymous() and not settings.ANONYMOUS_WRITE:
         return False
-    elif article.other_write:
+    elif target.other_write:
         return True
     elif user.is_anonymous():
         return  False
-    if user == article.owner:
+    if user == target.owner:
         return True
-    if article.group_write:
-        if article.group and user and user.groups.filter(id=article.group.id).exists():
+    if target.group_write:
+        if target.group and user and user.groups.filter(id=target.group.id).exists():
             return True
-    if article.can_moderate(user):
+    if target.can_moderate(user):
         return True
     return False
 
-def can_assign(article, user):
+def can_assign(target, user):
     if callable(settings.CAN_ASSIGN):
-        return settings.CAN_ASSIGN(article, user)
+        return settings.CAN_ASSIGN(target, user)
     return not user.is_anonymous() and user.has_perm('wiki.assign')
 
-def can_assign_owner(article, user):
+def can_assign_owner(target, user):
     if callable(settings.CAN_ASSIGN_OWNER):
-        return settings.CAN_ASSIGN_OWNER(article, user)
+        return settings.CAN_ASSIGN_OWNER(target, user)
     return False
 
-def can_change_permissions(article, user):
+def can_change_permissions(target, user):
     if callable(settings.CAN_CHANGE_PERMISSIONS):
-        return settings.CAN_CHANGE_PERMISSIONS(article, user)
+        return settings.CAN_CHANGE_PERMISSIONS(target, user)
     return (
         not user.is_anonymous() and (
-            article.owner == user or 
+            target.owner == user or
             user.has_perm('wiki.assign')
         )
     )
 
-def can_delete(article, user):
+def can_delete(target, user):
     if callable(settings.CAN_DELETE):
-        return settings.CAN_DELETE(article, user)
-    return not user.is_anonymous() and article.can_write(user)
+        return settings.CAN_DELETE(target, user)
+    return not user.is_anonymous() and target.can_write(user)
 
-def can_moderate(article, user):
+def can_moderate(target, user):
     if callable(settings.CAN_MODERATE):
-        return settings.CAN_MODERATE(article, user)
+        return settings.CAN_MODERATE(target, user)
     return not user.is_anonymous() and user.has_perm('wiki.moderate')
 
-def can_admin(article, user):
+def can_admin(target, user):
     if callable(settings.CAN_ADMIN):
-        return settings.CAN_ADMIN(article, user)
+        return settings.CAN_ADMIN(target, user)
     return not user.is_anonymous() and user.has_perm('wiki.admin')
 

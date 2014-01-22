@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.db.models.query import QuerySet, EmptyQuerySet
 from mptt.managers import TreeManager
 
-class ArticleEmptyQuerySet(EmptyQuerySet):
+class PermissionEmptyQuerySet(EmptyQuerySet):
     def can_read(self, user):
         return self
     def can_write(self, user):
@@ -11,7 +11,7 @@ class ArticleEmptyQuerySet(EmptyQuerySet):
     def active(self):
         return self
 
-class ArticleQuerySet(QuerySet):
+class PermissionQuerySet(QuerySet):
     
     def can_read(self, user):
         """Filter objects so only the ones with a user's reading access
@@ -93,11 +93,11 @@ class ArticleFkQuerySet(ArticleFkQuerySetMixin, QuerySet):
 class ArticleFkEmptyQuerySet(ArticleFkEmptyQuerySetMixin, EmptyQuerySet):
     pass
 
-class ArticleManager(models.Manager):
+class PermissionManager(models.Manager):
     def get_empty_query_set(self):
-        return ArticleEmptyQuerySet(model=self.model)
+        return PermissionEmptyQuerySet(model=self.model)
     def get_query_set(self):
-        return ArticleQuerySet(self.model, using=self._db)
+        return PermissionQuerySet(self.model, using=self._db)
     def active(self):
         return self.get_query_set().active()
     def can_read(self, user):

@@ -24,7 +24,7 @@ There are three kinds of plugin base models:
 
 """
 
-from article import ArticleRevision, BaseRevisionMixin
+from article import Article, ArticleRevision, BaseRevisionMixin
 from wiki.conf import settings 
 
 class ArticlePlugin(models.Model):
@@ -33,7 +33,7 @@ class ArticlePlugin(models.Model):
     clean. Furthermore, it's possible to list all plugins and maintain generic
     properties in the future..."""    
     
-    article = models.ForeignKey('wiki.Article', on_delete=models.CASCADE, 
+    article = models.ForeignKey('wiki.Article', on_delete=models.CASCADE,
                                 verbose_name=_(u"article"))
     
     deleted = models.BooleanField(default=False)

@@ -6,6 +6,7 @@ import warnings
 
 # TODO: Don't use wildcards
 from article import *
+from section import *
 from urlpath import *
 
 # TODO: Should the below stuff be executed a more logical place?

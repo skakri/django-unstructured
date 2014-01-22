@@ -1,19 +1,24 @@
 Latest Changes
 ==============
-Compiled on: O  jan 21 11:39:03 EET 2014
+Compiled on: T  jan 22 12:03:05 EET 2014
 
-    * 437f852 - (HEAD, origin/cleanup, cleanup) Fixed tipo (61 minutes ago) <Kristaps Karlsons>
-    * 8dcd4cf - Moved ArticleRevision `deleted` and `locked` flags to Article. (63 minutes ago) <Kristaps Karlsons>
-    * 980022b - Removed static files and templates. (85 minutes ago) <Kristaps Karlsons>
-    * 0621a6e - Updated docs and settings. (3 hours ago) <Kristaps Karlsons>
-    * 937b39c - Removed django_notify dependency and `notifications` plugin. It'll be possible to hook in to signals. (3 hours ago) <Kristaps Karlsons>
-    * 3001d1d - (origin/master, origin/HEAD, master) Updated README.md to reflect django-wiki-base goals (18 hours ago) <Kristaps Karlsons>
-    * 53807f5 - add rtd conf env (12 days ago) <benjaoming>
-    *   ecd2dec - Merge pull request #227 from spookylukey/easy_branding (12 days ago) <benjaoming>
+    * fa11087 - (HEAD, origin/master, origin/HEAD, master) Got rid of sekizai dependency, removed plugin views and urls. (22 hours ago) <Kristaps Karlsons>
+    * 4837abc - Added sphinx-apidoc built documentation. (23 hours ago) <Kristaps Karlsons>
+    * d800670 - (origin/cleanup, cleanup) Added `notes` section to documentation (23 hours ago) <Kristaps Karlsons>
+    * 925b82c - Updated documentation, removed test url settings, adjusted Sphinx settings. (23 hours ago) <Kristaps Karlsons>
+    * 18d0577 - Removed views, emptied tests (as they were view-based). Updated documentation to include correct links. Botched CHANGELOG.md while testing pypi upload and build-sdist.sh. Related - uploaded current version 0.0.1 to pypi. (24 hours ago) <Kristaps Karlsons>
+    * 437f852 - Fixed tipo (25 hours ago) <Kristaps Karlsons>
+    * 8dcd4cf - Moved ArticleRevision `deleted` and `locked` flags to Article. (25 hours ago) <Kristaps Karlsons>
+    * 980022b - Removed static files and templates. (26 hours ago) <Kristaps Karlsons>
+    * 0621a6e - Updated docs and settings. (27 hours ago) <Kristaps Karlsons>
+    * 937b39c - Removed django_notify dependency and `notifications` plugin. It'll be possible to hook in to signals. (27 hours ago) <Kristaps Karlsons>
+    * 3001d1d - Updated README.md to reflect django-wiki-base goals (2 days ago) <Kristaps Karlsons>
+    * 53807f5 - add rtd conf env (13 days ago) <benjaoming>
+    *   ecd2dec - Merge pull request #227 from spookylukey/easy_branding (13 days ago) <benjaoming>
     |\  
-    | * 051ca6e - Corrected docs for easy branding method (12 days ago) <Luke Plant>
-    | * d1ea57b - Added easy way to brand the wiki, avoiding lots of copy and paste. (12 days ago) <Luke Plant>
-    | * 3b7420e - Beginnings of docs - converted from README (12 days ago) <Luke Plant>
+    | * 051ca6e - Corrected docs for easy branding method (13 days ago) <Luke Plant>
+    | * d1ea57b - Added easy way to brand the wiki, avoiding lots of copy and paste. (13 days ago) <Luke Plant>
+    | * 3b7420e - Beginnings of docs - converted from README (13 days ago) <Luke Plant>
     |/  
     * 2eaf23e - (tag: alpha/0.0.23) Bump to 0.0.23 (2 weeks ago) <benjaoming>
     * 57e9bcf - Fix #221 - not correctly inheriting some permissions, save() called on URLPath object instead of Article object! (2 weeks ago) <benjaoming>
@@ -51,8 +56,8 @@ Compiled on: O  jan 21 11:39:03 EET 2014
     * f1bad2d - automatically generate docs and CHANGELOG.md (10 weeks ago) <benjaoming>
     * b757c6d - Trying out a markdown formatted auto-gererated for new releases CHANGELOG (10 weeks ago) <benjaoming>
     * 22936c3 - Automating version number for sphinx (10 weeks ago) <benjaoming>
-    * f232fd6 - django 1.6 fix for #191 - ArticleRevision.get_latest_by should be single field, not tuple (10 weeks ago) <benjaoming>
-    * cc31f07 - django 1.6 and #191 BooleanField now has NULL value (10 weeks ago) <benjaoming>
+    * f232fd6 - django 1.6 fix for #191 - ArticleRevision.get_latest_by should be single field, not tuple (2 months ago) <benjaoming>
+    * cc31f07 - django 1.6 and #191 BooleanField now has NULL value (2 months ago) <benjaoming>
     *   d0ea990 - Merge pull request #208 from stratatech/master (3 months ago) <benjaoming>
     |\  
     | * d8e872f - Russian translations fixes (3 months ago) <sminozhenko>
@@ -129,8 +134,8 @@ Compiled on: O  jan 21 11:39:03 EET 2014
     | * 8ffd8f0 - Fix #178 - improve urlize regex to accept everything after a domain, except spaces, [, and ( (5 months ago) <benjaoming>
     * | 05ecdbb - Fix #178 - improve urlize regex to accept everything after a domain, except spaces, [, and ( (5 months ago) <benjaoming>
     |/  
-    * 2108a32 - grid layout on all form-action occurences (5 months ago) <benjaoming>
-    * 5a90cfe - more issues in bootstrap 3 form widgets (5 months ago) <benjaoming>
+    * 2108a32 - grid layout on all form-action occurences (6 months ago) <benjaoming>
+    * 5a90cfe - more issues in bootstrap 3 form widgets (6 months ago) <benjaoming>
     * bb89355 - textarea height and edit page button layout (6 months ago) <benjaoming>
     * 4aef17a - Fix #181 and #183 -- responsive modals, prepend for form inputs, form controls fixed for horizontal and vertical layouts (6 months ago) <benjaoming>
     * eb21b9d - bootstrap 3 compat on attachments plugin (6 months ago) <benjaoming>
@@ -215,7 +220,7 @@ Compiled on: O  jan 21 11:39:03 EET 2014
     |\ \ \  
     | |/ /  
     |/| |   
-    | * |   784f8d6 - Merge pull request #1 from TomLottermann/haystack-search (7 months ago) <jdcaballero>
+    | * |   784f8d6 - Merge pull request #1 from TomLottermann/haystack-search (8 months ago) <jdcaballero>
     | |\ \  
     | | * | 6108d30 - Minor fix (8 months ago) <Thomas Lottermann>
     | | * | e10d573 - Haystack 2.0 broke some stuff (site did not exist). This is fixed now. Furthermore we can use the highlighter by haystack. It does some stuff nicer than django-wikis (8 months ago) <Thomas Lottermann>
@@ -296,7 +301,7 @@ Compiled on: O  jan 21 11:39:03 EET 2014
     |\ \  
     | * \   7a2103d - Merge pull request #150 from xiaclo/patch-1 (8 months ago) <benjaoming>
     | |\ \  
-    | | * | ee85908 - Remove space from urlify.js path (8 months ago) <xiaclo>
+    | | * | ee85908 - Remove space from urlify.js path (9 months ago) <xiaclo>
     | |/ /  
     | * |   7e0f0a3 - Merge pull request #149 from TomLottermann/master (9 months ago) <benjaoming>
     | |\ \  
@@ -543,7 +548,7 @@ Compiled on: O  jan 21 11:39:03 EET 2014
     * 6a3c777 - resizable modals (11 months ago) <benjaoming>
     * e4d0669 - add template assignment tag login_url (11 months ago) <benjaoming>
     * 73af524 - broken boostrap-responsive build (11 months ago) <benjaoming>
-    * be19fdb - do not show deleted articles in article_list macro (11 months ago) <benjaoming>
+    * be19fdb - do not show deleted articles in article_list macro (12 months ago) <benjaoming>
     *   6be1a3d - Merge branch 'master' of github.com:benjaoming/django-wiki (12 months ago) <benjaoming>
     |\  
     | * eb3bd0b - Update README.md (12 months ago) <benjaoming>
@@ -1050,13 +1055,13 @@ Compiled on: O  jan 21 11:39:03 EET 2014
     * 0c57d76 - moving transaction commit (1 year, 5 months ago) <benjaoming>
     * 08bfb16 - More robustness in Attachments plugin. Give a good error message upon non-allowed uploads. Fix JSON decorator error. Ignore media files in test project. (1 year, 5 months ago) <benjaoming>
     * a2ba2c8 - Attachment plugin almost finished. Can delete and restore files and replace. Contains a smart obscurification feature that hides files. This way, files can have reading restrictions imposed. (1 year, 5 months ago) <benjaoming>
-    * d96da78 - Better install instructions (1 year, 5 months ago) <benjaoming>
-    * 81e8157 - Simple account handling, log in, log out and sign up. (1 year, 5 months ago) <benjaoming>
-    * bfef21b - A bit of login toolbar (1 year, 5 months ago) <benjaoming>
-    * ebb25ab - Adding notify frontend. (1 year, 5 months ago) <benjaoming>
-    * 1a0396d - Adding from old feature list (1 year, 5 months ago) <benjaoming>
-    * 5e3b668 - Add GPLv3 license, clean up code (1 year, 5 months ago) <benjaoming>
-    * 8408f01 - More class-based views. Mixin class for Article-related views handling permissions etc. More complex plugin structure for easy creation of plugins with very easy integration in the article tab menu etc. (1 year, 5 months ago) <benjaoming>
+    * d96da78 - Better install instructions (1 year, 6 months ago) <benjaoming>
+    * 81e8157 - Simple account handling, log in, log out and sign up. (1 year, 6 months ago) <benjaoming>
+    * bfef21b - A bit of login toolbar (1 year, 6 months ago) <benjaoming>
+    * ebb25ab - Adding notify frontend. (1 year, 6 months ago) <benjaoming>
+    * 1a0396d - Adding from old feature list (1 year, 6 months ago) <benjaoming>
+    * 5e3b668 - Add GPLv3 license, clean up code (1 year, 6 months ago) <benjaoming>
+    * 8408f01 - More class-based views. Mixin class for Article-related views handling permissions etc. More complex plugin structure for easy creation of plugins with very easy integration in the article tab menu etc. (1 year, 6 months ago) <benjaoming>
     * fa4af85 - Error on saving revisions for anonymous users (1 year, 6 months ago) <benjaoming>
     * 64a20e8 - Adding notifications for article edits and creations (1 year, 6 months ago) <benjaoming>
     * 700e466 - Fixing js bug in SelectWidgetBootstrap (1 year, 6 months ago) <benjaoming>

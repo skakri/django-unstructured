@@ -17,7 +17,7 @@ from django.core.urlresolvers import reverse
 
 class Article(models.Model):
     
-    objects = managers.ArticleManager()
+    objects = managers.PermissionManager()
     
     current_revision = models.OneToOneField('ArticleRevision', 
                                             verbose_name=_(u'current revision'),
@@ -282,12 +282,12 @@ class ArticleRevision(BaseRevisionMixin, models.Model):
         self.title = predecessor.title
 
     def save(self, *args, **kwargs):
-        if (not self.id and
-            not self.previous_revision and 
-            self.article and
-            self.article.current_revision and 
-            self.article.current_revision != self):
-            
+        if (not self.id
+                and not self.previous_revision
+                and self.article
+                and self.article.current_revision
+                and self.article.current_revision != self):
+
             self.previous_revision = self.article.current_revision
 
         if not self.revision_number:

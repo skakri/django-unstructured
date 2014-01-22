@@ -4,24 +4,20 @@ wiki.models package
 Submodules
 ----------
 
-wiki.models.article module
---------------------------
-
 .. automodule:: wiki.models.article
     :members:
     :undoc-members:
     :show-inheritance:
-
-wiki.models.pluginbase module
------------------------------
 
 .. automodule:: wiki.models.pluginbase
     :members:
     :undoc-members:
     :show-inheritance:
 
-wiki.models.urlpath module
---------------------------
+.. automodule:: wiki.models.section
+    :members:
+    :undoc-members:
+    :show-inheritance:
 
 .. automodule:: wiki.models.urlpath
     :members:
