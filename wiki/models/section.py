@@ -11,12 +11,15 @@ from wiki.core import article_markdown, permissions
 from wiki.core import compat
 from wiki import managers
 from wiki.models import BaseRevisionMixin
+from wiki.models import Article
 
 from mptt.models import MPTTModel
 
 
 class Section(models.Model):
     objects = managers.PermissionManager()
+
+    article = models.OneToOneField(Article, default=None, null=True, related_name='section')
 
     current_revision = models.OneToOneField(
         'SectionRevision',

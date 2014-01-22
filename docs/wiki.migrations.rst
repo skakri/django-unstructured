@@ -84,6 +84,11 @@ Submodules
     :undoc-members:
     :show-inheritance:
 
+.. automodule:: wiki.migrations.0017_auto__add_field_section_article
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

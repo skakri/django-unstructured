@@ -1,8 +1,9 @@
 Latest Changes
 ==============
-Compiled on: T  jan 22 14:55:05 EET 2014
+Compiled on: T  jan 22 16:24:44 EET 2014
 
-    * 332ae02 - (HEAD, origin/master, origin/HEAD, master) Added SectionNode MPTT model. (2014-01-22 14:20:24 +0200) <Kristaps Karlsons>
+    * 1361728 - (HEAD, tag: release/0.0.3, origin/master, origin/HEAD, master) Bump to 0.0.3, changed changelog format. (2014-01-22 15:01:48 +0200) <Kristaps Karlsons>
+    * 332ae02 - Added SectionNode MPTT model. (2014-01-22 14:20:24 +0200) <Kristaps Karlsons>
     * 789fcee - Addeed Section and SectionRevision stubs (based on Article respective counterparts). Renamed ArticleManager to PermissionManager. (2014-01-22 12:03:56 +0200) <Kristaps Karlsons>
     * fa11087 - Got rid of sekizai dependency, removed plugin views and urls. (2014-01-21 13:43:04 +0200) <Kristaps Karlsons>
     * 4837abc - Added sphinx-apidoc built documentation. (2014-01-21 13:21:32 +0200) <Kristaps Karlsons>
