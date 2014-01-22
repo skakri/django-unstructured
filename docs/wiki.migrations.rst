@@ -79,6 +79,11 @@ Submodules
     :undoc-members:
     :show-inheritance:
 
+.. automodule:: wiki.migrations.0016_auto__add_sectionnode__add_unique_sectionnode_parent_slug
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------
