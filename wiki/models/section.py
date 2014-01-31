@@ -19,8 +19,6 @@ from mptt.models import MPTTModel
 class Section(models.Model):
     objects = managers.PermissionManager()
 
-    article = models.OneToOneField(Article, default=None, null=True, related_name='section')
-
     current_revision = models.OneToOneField(
         'SectionRevision',
         verbose_name=_(u'current revision'),
@@ -204,6 +202,7 @@ class SectionRevision(BaseRevisionMixin, models.Model):
 class SectionNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
     section = models.ForeignKey(Section, related_name='node')
+    article = models.OneToOneField(Article, default=None, null=True, related_name='root_node')
 
     slug = models.SlugField(verbose_name=_(u'slug'), null=True, blank=True,
                             max_length=50)
