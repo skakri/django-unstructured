@@ -1,8 +1,10 @@
 Latest Changes
 ==============
-Compiled on: T  jan 22 16:24:44 EET 2014
+Compiled on: Pk jan 31 09:55:37 EET 2014
 
-    * 1361728 - (HEAD, tag: release/0.0.3, origin/master, origin/HEAD, master) Bump to 0.0.3, changed changelog format. (2014-01-22 15:01:48 +0200) <Kristaps Karlsons>
+    * d3a1051 - (HEAD, master) Article has SectionNode binding, not Section. This enables Article to have multiple first-level sections: Article->SectionNode->SectionNodes->Section (2014-01-31 09:52:19 +0200) <Kristaps Karlsons>
+    * 7bcbd01 - (tag: release/0.0.4, origin/master, origin/HEAD) Blindly forgot to add Article <-> (base) Section relation. (2014-01-22 16:25:01 +0200) <Kristaps Karlsons>
+    * 1361728 - (tag: release/0.0.3) Bump to 0.0.3, changed changelog format. (2014-01-22 15:01:48 +0200) <Kristaps Karlsons>
     * 332ae02 - Added SectionNode MPTT model. (2014-01-22 14:20:24 +0200) <Kristaps Karlsons>
     * 789fcee - Addeed Section and SectionRevision stubs (based on Article respective counterparts). Renamed ArticleManager to PermissionManager. (2014-01-22 12:03:56 +0200) <Kristaps Karlsons>
     * fa11087 - Got rid of sekizai dependency, removed plugin views and urls. (2014-01-21 13:43:04 +0200) <Kristaps Karlsons>
