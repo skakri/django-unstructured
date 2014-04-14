@@ -18,4 +18,4 @@
 # You should have received a copy of the GNU General Public License
 # along with django-wiki-base. If not, see <http://www.gnu.org/licenses/>.
 
-VERSION = "0.1.0"
+VERSION = "0.2.0"
