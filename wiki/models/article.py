@@ -5,31 +5,31 @@ from django.contrib.auth.models import Group
 from django.core.cache import cache
 from django.db import models
 from django.db.models.signals import post_save, pre_delete
-from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from wiki.conf import settings
-from wiki.core import article_markdown, permissions
+from wiki.core import permissions
 from wiki.core import compat
 from wiki import managers
 from mptt.models import MPTTModel
 from django.core.urlresolvers import reverse
 
+
 class Article(models.Model):
-    
     objects = managers.PermissionManager()
-    
-    current_revision = models.OneToOneField('ArticleRevision', 
-                                            verbose_name=_(u'current revision'),
-                                            blank=True, null=True, related_name='current_set',
-                                            help_text=_(u'The revision being displayed for this article. If you need to do a roll-back, simply change the value of this field.'),
-                                            )
+    current_revision = models.OneToOneField(
+        'ArticleRevision',
+        verbose_name=_(u'current revision'),
+        blank=True, null=True, related_name='current_set',
+        help_text=_(u'The revision being displayed for this article. '
+                    u'If you need to do a roll-back, simply change the value of this field.'),
+    )
 
     deleted = models.BooleanField(
         verbose_name=_(u'deleted'),
         default=False,
     )
-    locked  = models.BooleanField(
+    locked = models.BooleanField(
         verbose_name=_(u'locked'),
         default=False,
     )
@@ -38,15 +38,21 @@ class Article(models.Model):
     modified = models.DateTimeField(auto_now=True, verbose_name=_(u'modified'),
                                     help_text=_(u'Article properties last modified'))
 
-    owner = models.ForeignKey(compat.USER_MODEL, verbose_name=_('owner'),
-                              blank=True, null=True, related_name='owned_articles',
-                              help_text=_(u'The owner of the article, usually the creator. The owner always has both read and write access.'),
-                              on_delete=models.SET_NULL)
+    owner = models.ForeignKey(
+        compat.USER_MODEL, verbose_name=_('owner'),
+        blank=True, null=True, related_name='owned_articles',
+        help_text=_(u'The owner of the article, usually the creator. '
+                    u'The owner always has both read and write access.'),
+        on_delete=models.SET_NULL
+    )
     
-    group = models.ForeignKey(Group, verbose_name=_('group'),
-                              blank=True, null=True,
-                              help_text=_(u'Like in a UNIX file system, permissions can be given to a user according to group membership. Groups are handled through the Django auth system.'),
-                              on_delete=models.SET_NULL)
+    group = models.ForeignKey(
+        Group, verbose_name=_('group'),
+        blank=True, null=True,
+        help_text=_(u'Like in a UNIX file system, permissions can be given to a user according to group membership. '
+                    u'Groups are handled through the Django auth system.'),
+        on_delete=models.SET_NULL
+    )
     
     group_read = models.BooleanField(default=True, verbose_name=_(u'group read access'))
     group_write = models.BooleanField(default=True, verbose_name=_(u'group write access'))
@@ -56,12 +62,16 @@ class Article(models.Model):
     # PERMISSIONS
     def can_read(self, user):
         return permissions.can_read(self, user)
+
     def can_write(self, user):
         return permissions.can_write(self, user)
+
     def can_delete(self, user):
         return permissions.can_delete(self, user)
+
     def can_moderate(self, user):
         return permissions.can_moderate(self, user)
+
     def can_assign(self, user):
         return permissions.can_assign(self, user)
     
@@ -87,7 +97,8 @@ class Article(models.Model):
                 objects = obj.content_object.get_children().filter(**kwargs)
             for child in objects.order_by('articles__article__current_revision__title'):
                 cnt += 1
-                if max_num and cnt > max_num: return
+                if max_num and cnt > max_num:
+                    return
                 yield child
 
     # All recursive permission methods will use descendant_objects to access
@@ -121,7 +132,8 @@ class Article(models.Model):
         assert self.id or save, ('Article.add_revision: Sorry, you cannot add a' 
                                  'revision to an article that has not been saved '
                                  'without using save=True')
-        if not self.id: self.save()
+        if not self.id:
+            self.save()
         revisions = self.articlerevision_set.all()
         try:
             new_revision.revision_number = revisions.latest().revision_number + 1
@@ -129,9 +141,11 @@ class Article(models.Model):
             new_revision.revision_number = 0
         new_revision.article = self
         new_revision.previous_revision = self.current_revision
-        if save: new_revision.save()
+        if save:
+            new_revision.save()
         self.current_revision = new_revision
-        if save: self.save()
+        if save:
+            self.save()
     
     def add_object_relation(self, obj):
         content_type = ContentType.objects.get_for_model(obj)
@@ -144,7 +158,9 @@ class Article(models.Model):
     
     @classmethod
     def get_for_object(cls, obj):
-        return ArticleForObject.objects.get(object_id=obj.id, content_type=ContentType.objects.get_for_model(obj)).article
+        return ArticleForObject.objects.get(
+            object_id=obj.id, content_type=ContentType.objects.get_for_model(obj)
+        ).article
     
     def __unicode__(self):
         if self.current_revision:
@@ -167,7 +183,7 @@ class Article(models.Model):
             content = preview_content
         else:
             content = self.current_revision.content
-        return mark_safe(article_markdown(content, self))
+        return content
     
     def get_cache_key(self):
         return "wiki:article:%d" % (self.current_revision.id if self.current_revision else self.id)
@@ -175,7 +191,7 @@ class Article(models.Model):
     def get_cached_content(self):
         """Returns cached """
         cache_key = self.get_cache_key()
-        cached_content =  cache.get(cache_key)
+        cached_content = cache.get(cache_key)
         if cached_content is None:
             cached_content = self.render()
             cache.set(cache_key, cached_content, settings.CACHE_TIMEOUT)
@@ -198,10 +214,12 @@ class ArticleForObject(models.Model):
     
     article = models.ForeignKey('Article', on_delete=models.CASCADE)
     # Same as django.contrib.comments
-    content_type   = models.ForeignKey(ContentType,
-                                       verbose_name=_('content type'),
-                                       related_name="content_type_set_for_%(class)s")
-    object_id      = models.PositiveIntegerField(_('object ID'))
+    content_type = models.ForeignKey(
+        ContentType,
+        verbose_name=_('content type'),
+        related_name="content_type_set_for_%(class)s"
+    )
+    object_id = models.PositiveIntegerField(_('object ID'))
     content_object = generic.GenericForeignKey("content_type", "object_id")
     
     is_mptt = models.BooleanField(default=False, editable=False)
@@ -213,6 +231,7 @@ class ArticleForObject(models.Model):
         # Do not allow several objects
         unique_together = ('content_type', 'object_id')
 
+
 class BaseRevisionMixin(models.Model):
     """This is an abstract model used as a mixin: Do not override any of the 
     core model methods but respect the inheritor's freedom to do so itself."""
@@ -222,10 +241,12 @@ class BaseRevisionMixin(models.Model):
     user_message = models.TextField(blank=True,)
     automatic_log = models.TextField(blank=True, editable=False,)
     
-    ip_address  = models.IPAddressField(_('IP address'), blank=True, null=True, editable=False)
-    user        = models.ForeignKey(compat.USER_MODEL, verbose_name=_('user'),
-                                    blank=True, null=True,
-                                    on_delete=models.SET_NULL)
+    ip_address = models.IPAddressField(_('IP address'), blank=True, null=True, editable=False)
+    user = models.ForeignKey(
+        compat.USER_MODEL, verbose_name=_('user'),
+        blank=True, null=True,
+        on_delete=models.SET_NULL
+    )
     
     modified = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -244,7 +265,8 @@ class BaseRevisionMixin(models.Model):
     
     class Meta:
         abstract = True
-    
+
+
 class ArticleRevision(BaseRevisionMixin, models.Model):
     """This is where main revision data is stored. To make it easier to
     copy, do NEVER create m2m relationships."""
@@ -257,17 +279,13 @@ class ArticleRevision(BaseRevisionMixin, models.Model):
     
     # This title is automatically set from either the article's title or
     # the last used revision...
-    title = models.CharField(max_length=512, verbose_name=_(u'article title'), 
-                             null=False, blank=False, help_text=_(u'Each revision contains a title field that must be filled out, even if the title has not changed'))
-    
-    # TODO:
-    # Allow a revision to redirect to another *article*. This 
-    # way, we can redirects and still maintain old content.
-    #redirect = models.ForeignKey('Article', null=True, blank=True,
-    #                             verbose_name=_(u'redirect'),
-    #                             help_text=_(u'If set, the article will redirect to the contents of another article.'),
-    #                             related_name='redirect_set')
-    
+    title = models.CharField(
+        max_length=512, verbose_name=_(u'article title'),
+        null=False, blank=False,
+        help_text=_(u'Each revision contains a title field that must be filled out, '
+                    u'even if the title has not changed')
+    )
+
     def __unicode__(self):
         return "%s (%d)" % (self.title, self.revision_number)
     
@@ -321,12 +339,13 @@ def _clear_ancestor_cache(article):
     for ancestor in article.ancestor_objects():
         ancestor.article.clear_cache()
 
-def on_article_save_clear_cache(instance, **kwargs):
+
+def on_article_save_clear_cache(instance):
     _clear_ancestor_cache(instance)
 post_save.connect(on_article_save_clear_cache, Article)
 
-def on_article_delete_clear_cache(instance, **kwargs):
+
+def on_article_delete_clear_cache(instance):
     _clear_ancestor_cache(instance)
     instance.clear_cache()
 pre_delete.connect(on_article_delete_clear_cache, Article)
-
