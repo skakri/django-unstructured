@@ -1,9 +1,19 @@
 Latest Changes
 ==============
-Compiled on: Pk jan 31 09:55:37 EET 2014
+Compiled on: P  apr 14 18:04:43 EEST 2014
 
-    * d3a1051 - (HEAD, master) Article has SectionNode binding, not Section. This enables Article to have multiple first-level sections: Article->SectionNode->SectionNodes->Section (2014-01-31 09:52:19 +0200) <Kristaps Karlsons>
-    * 7bcbd01 - (tag: release/0.0.4, origin/master, origin/HEAD) Blindly forgot to add Article <-> (base) Section relation. (2014-01-22 16:25:01 +0200) <Kristaps Karlsons>
+    *   4ecb162 - (HEAD, origin/master, origin/HEAD, master) Merge branch 'feature/denormalization'. (2014-04-14 18:03:29 +0300) <Kristaps Karlsons>
+    |\  
+    | * 59e212a - (origin/feature/denormalization, feature/denormalization) Removed pdf generation, binary data shouldn't live here. (2014-04-14 18:00:23 +0300) <Kristaps Karlsons>
+    | * b76112a - Removed testproject, it's broken. Adjusted requirements. (2014-04-14 17:56:16 +0300) <Kristaps Karlsons>
+    | * c9da833 - Removed tests directory, why lie to ourselves, we don't have any tests. Yet. (2014-04-14 17:48:43 +0300) <Kristaps Karlsons>
+    | * d87a74d - PEP8zed models. Removed file-related code. (2014-04-14 17:47:11 +0300) <Kristaps Karlsons>
+    | * 1ebfb7b - Removed plugin functionality, transformed Section no base upon MPTT, no more Section nodes. Brakes compatibility - changes aren't backwards-compatible, needs data migration. (2014-04-14 17:30:21 +0300) <Kristaps Karlsons>
+    * | 5d4222e - Version bump. (2014-04-14 18:03:00 +0300) <Kristaps Karlsons>
+    |/  
+    * eddc38e - (tag: release/0.1.0) 0.1.0 Changelog and Model chart. (2014-01-31 09:56:34 +0200) <Kristaps Karlsons>
+    * d3a1051 - Article has SectionNode binding, not Section. This enables Article to have multiple first-level sections: Article->SectionNode->SectionNodes->Section (2014-01-31 09:52:19 +0200) <Kristaps Karlsons>
+    * 7bcbd01 - (tag: release/0.0.4) Blindly forgot to add Article <-> (base) Section relation. (2014-01-22 16:25:01 +0200) <Kristaps Karlsons>
     * 1361728 - (tag: release/0.0.3) Bump to 0.0.3, changed changelog format. (2014-01-22 15:01:48 +0200) <Kristaps Karlsons>
     * 332ae02 - Added SectionNode MPTT model. (2014-01-22 14:20:24 +0200) <Kristaps Karlsons>
     * 789fcee - Addeed Section and SectionRevision stubs (based on Article respective counterparts). Renamed ArticleManager to PermissionManager. (2014-01-22 12:03:56 +0200) <Kristaps Karlsons>
