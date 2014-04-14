@@ -1,22 +1,15 @@
-django-wiki-base
+adjango-wiki-base
 ================
 
 Background
 ----------
 
-Django-wiki-base is a lightweight, stripped down version of [django-wiki](https://github.com/benjaoming/django-wiki), it only contains structure models (to be easily included in existing project via API).
+Django-wiki-base is a lightweight, heavily customized version of [django-wiki](https://github.com/benjaoming/django-wiki), it only contains structure models (to be easily included in existing project via API).
 
-Current goals
--------------
 
-* Markup language switch (Markdown, reST, HTML, ..)
-
-Changes from django-wiki
-------------------------
-
-* Moved ArticleRevision `deleted` and `locked` flags to Article
-* Strip all unneeded stuff - views, etc.
-* Transform Article to use Sections' (based on MPTT - possible to reorder/nest) from which article menu could be created (think MediaWiki)
+Can I use existing django-wiki data with wiki-base?
+---------------------------------------------------
+No, sorry.
 
 Contributing
 ------------
@@ -32,16 +25,12 @@ So far the dependencies are:
  * [django-south](http://south.aeracode.org/)
  * [Markdown>=2.2.0](https://github.com/waylan/Python-Markdown)
  * [django-mptt>=0.5.3](https://github.com/django-mptt/django-mptt)
- * [sorl-thumbnail](https://github.com/sorl/sorl-thumbnail) (to be removed?)
- * Pillow (Python Imaging Library)
  * Python>=2.5<3 (Python 3 not yet supported)
 
 Development
 ------------
 
 In your Git fork, run `pip install -r requirements.txt` to install the requirements.
-
-The folder **testproject/** contains a pre-configured django project (subject to change) and an sqlite database. Login for django admin is *admin:admin*. This project should always be maintained, but please do not commit changes to the SQLite database as we only care about its contents in case data models are changed.
 
 
 Python compatibility
