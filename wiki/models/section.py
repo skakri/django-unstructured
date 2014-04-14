@@ -131,6 +131,8 @@ class Section(MPTTModel):
         return unicode(obj_name)
 
     class MPTTMeta:
+        def __init__(self):
+            pass
         pass
 
     class Meta:
@@ -205,4 +207,3 @@ class SectionRevision(BaseRevisionMixin, models.Model):
         get_latest_by = 'revision_number'
         ordering = ('created',)
         unique_together = ('section', 'revision_number')
-

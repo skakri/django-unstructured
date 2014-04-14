@@ -10,9 +10,9 @@ from django.db import models, transaction
 
 #Django 1.6 transaction API, required for 1.8+
 try:
-   notrans=transaction.non_atomic_requests 
+    notrans = transaction.non_atomic_requests
 except:
-   notrans=transaction.commit_manually
+    notrans = transaction.commit_manually
 
 from django.db.models.signals import post_save, pre_delete
 from django.utils.translation import ugettext_lazy as _, ugettext
@@ -26,6 +26,7 @@ from wiki.core.exceptions import NoRootURL, MultipleRootURLs
 from wiki.models.article import ArticleRevision, ArticleForObject, Article
 
 log = logging.getLogger(__name__)
+
 
 class URLPath(MPTTModel):
     """
@@ -59,13 +60,7 @@ class URLPath(MPTTModel):
     slug = models.SlugField(verbose_name=_(u'slug'), null=True, blank=True,
                             max_length=SLUG_MAX_LENGTH)
     site = models.ForeignKey(Site)
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')    
-    
-    def __init__(self, *args, **kwargs):
-        pass
-        # Fixed in django-mptt 0.5.3
-        #self._tree_manager = URLPath.objects
-        return super(URLPath, self).__init__(*args, **kwargs)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
     
     def __cached_ancestors(self):
         """
@@ -80,7 +75,7 @@ class URLPath(MPTTModel):
         if not self.get_ancestors().exists():
             self._cached_ancestors = []
         if not hasattr(self, "_cached_ancestors"):
-            self._cached_ancestors = list(self.get_ancestors().select_related_common() )
+            self._cached_ancestors = list(self.get_ancestors().select_related_common())
         
         return self._cached_ancestors
     
@@ -96,10 +91,11 @@ class URLPath(MPTTModel):
     
     @property
     def path(self):
-        if not self.parent: return ""
+        if not self.parent:
+            return ""
         
         ancestors = filter(lambda ancestor: ancestor.parent is not None, self.cached_ancestors)
-        slugs = [obj.slug if obj.slug else "" for obj in ancestors + [self] ]
+        slugs = [obj.slug if obj.slug else "" for obj in ancestors + [self]]
         
         return "/".join(slugs) + "/"
     
@@ -111,7 +107,7 @@ class URLPath(MPTTModel):
     
     def first_deleted_ancestor(self):
         for ancestor in self.cached_ancestors + [self]:
-            if ancestor.article.current_revision.deleted == True:
+            if ancestor.article.current_revision.deleted is True:
                 return ancestor
         return None
     
@@ -123,7 +119,7 @@ class URLPath(MPTTModel):
         """
         try:
             for descendant in self.get_descendants(include_self=True).order_by("-level"):
-                print "deleting " , descendant
+                print "deleting ", descendant
                 descendant.article.delete()
             
             transaction.commit()
@@ -131,8 +127,6 @@ class URLPath(MPTTModel):
             transaction.rollback()
             log.exception("Exception deleting article subtree.")
             
-        
-    
     @classmethod
     def root(cls):
         site = Site.objects.get_current()
@@ -149,6 +143,8 @@ class URLPath(MPTTModel):
         return root_nodes[0]
 
     class MPTTMeta:
+        def __init__(self):
+            pass
         pass
     
     def __unicode__(self):
@@ -179,7 +175,7 @@ class URLPath(MPTTModel):
         super(URLPath, self).clean(*args, **kwargs)
     
     @classmethod
-    def get_by_path(cls, path, select_related=False):
+    def get_by_path(cls, path):
         """
         Strategy: Don't handle all kinds of weird cases. Be strict.
         Accepts paths both starting with and without '/'
@@ -217,13 +213,15 @@ class URLPath(MPTTModel):
     
     @classmethod
     def create_root(cls, site=None, title="Root", request=None, **kwargs):
-        if not site: site = Site.objects.get_current()
+        if not site:
+            site = Site.objects.get_current()
         root_nodes = cls.objects.root_nodes().filter(site=site)
         if not root_nodes:
             # (get_or_create does not work for MPTT models??)
             article = Article()
             revision = ArticleRevision(title=title, **kwargs)
-            if request: revision.set_from_request(request)
+            if request:
+                revision.set_from_request(request)
             article.add_revision(revision, save=True)
             article.save()
             root = cls.objects.create(site=site, article=article)
@@ -254,6 +252,7 @@ class URLPath(MPTTModel):
 # Just get this once
 urlpath_content_type = None
 
+
 def on_article_relation_save(**kwargs):
     global urlpath_content_type
     instance = kwargs['instance']
@@ -264,13 +263,17 @@ def on_article_relation_save(**kwargs):
 
 post_save.connect(on_article_relation_save, ArticleForObject)
 
+
 class Namespace:
+    def __init__(self):
+        pass
     # An instance of Namespace simulates "nonlocal variable_name" declaration
     # in any nested function, that is possible in Python 3. It allows assigning
     # to non local variable without rebinding it local. See PEP 3104.
     pass
 
-def on_article_delete(instance, *args, **kwargs):
+
+def on_article_delete(instance):
     # If an article is deleted, then throw out its URLPaths
     # But move all descendants to a lost-and-found node.
     site = Site.objects.get_current()
@@ -280,27 +283,38 @@ def on_article_delete(instance, *args, **kwargs):
     # that the lost-and-found article can be deleted without being recreated!
     ns = Namespace()   # nonlocal namespace backported to Python 2.x
     ns.lost_and_found = None
+
     def get_lost_and_found():
         if ns.lost_and_found:
             return ns.lost_and_found
         try:
-            ns.lost_and_found = URLPath.objects.get(slug=settings.LOST_AND_FOUND_SLUG,
-                                                 parent=URLPath.root(),
-                                                 site=site)
+            ns.lost_and_found = URLPath.objects.get(
+                slug=settings.LOST_AND_FOUND_SLUG,
+                parent=URLPath.root(),
+                site=site
+            )
         except URLPath.DoesNotExist:
-            article = Article(group_read = True,
-                              group_write = False,
-                              other_read = False,
-                              other_write = False)
-            article.add_revision(ArticleRevision(
-                     content=_(u'Articles who lost their parents\n'
-                                '===============================\n\n'
-                                'The children of this article have had their parents deleted. You should probably find a new home for them.'),
-                     title=_(u"Lost and found")))
-            ns.lost_and_found = URLPath.objects.create(slug=settings.LOST_AND_FOUND_SLUG,
-                                                    parent=URLPath.root(),
-                                                    site=site,
-                                                    article=article)
+            article = Article(group_read=True,
+                              group_write=False,
+                              other_read=False,
+                              other_write=False)
+            article.add_revision(
+                ArticleRevision(
+                    content=_(
+                        u'Articles who lost their parents\n'
+                        u'===============================\n\n'
+                        u'The children of this article have had their parents deleted. '
+                        u'You should probably find a new home for them.'
+                    ),
+                    title=_(u"Lost and found")
+                )
+            )
+            ns.lost_and_found = URLPath.objects.create(
+                slug=settings.LOST_AND_FOUND_SLUG,
+                parent=URLPath.root(),
+                site=site,
+                article=article
+            )
             article.add_object_relation(ns.lost_and_found)
         return ns.lost_and_found
     
