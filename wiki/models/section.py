@@ -3,21 +3,25 @@ from mptt.models import TreeForeignKey
 from django.contrib.auth.models import Group
 from django.core.cache import cache
 from django.db import models
-from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
+from mptt.models import MPTTModel
 
 from wiki.conf import settings
-from wiki.core import article_markdown, permissions
+from wiki.core import permissions
 from wiki.core import compat
 from wiki import managers
 from wiki.models import BaseRevisionMixin
 from wiki.models import Article
 
-from mptt.models import MPTTModel
 
-
-class Section(models.Model):
+class Section(MPTTModel):
     objects = managers.PermissionManager()
+
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
+    article = models.OneToOneField(Article, default=None, null=True, related_name='root_node')
+
+    slug = models.SlugField(verbose_name=_(u'slug'), null=True, blank=True,
+                            max_length=50)
 
     current_revision = models.OneToOneField(
         'SectionRevision',
@@ -103,7 +107,7 @@ class Section(models.Model):
             content = preview_content
         else:
             content = self.current_revision.content
-        return mark_safe(article_markdown(content, self))
+        return content
 
     def get_cache_key(self):
         return "wiki:section:%d" % (self.current_revision.id if self.current_revision else self.id)
@@ -126,8 +130,12 @@ class Section(models.Model):
         obj_name = _(u'Section without content (%(id)d)') % {'id': self.id}
         return unicode(obj_name)
 
+    class MPTTMeta:
+        pass
+
     class Meta:
         app_label = settings.APP_LABEL
+        unique_together = ('parent', 'slug')
         permissions = (
             ("moderate", _(u"Can edit all sections and lock/unlock/restore")),
             ("assign", _(u"Can change ownership of any section")),
@@ -198,18 +206,3 @@ class SectionRevision(BaseRevisionMixin, models.Model):
         ordering = ('created',)
         unique_together = ('section', 'revision_number')
 
-
-class SectionNode(MPTTModel):
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='children')
-    section = models.ForeignKey(Section, related_name='node')
-    article = models.OneToOneField(Article, default=None, null=True, related_name='root_node')
-
-    slug = models.SlugField(verbose_name=_(u'slug'), null=True, blank=True,
-                            max_length=50)
-
-    class MPTTMeta:
-        pass
-
-    class Meta:
-        unique_together = ('parent', 'slug')
-        app_label = settings.APP_LABEL

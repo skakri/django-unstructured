@@ -5,11 +5,10 @@ from django.contrib.auth.models import Group
 from django.core.cache import cache
 from django.db import models
 from django.db.models.signals import post_save, pre_delete
-from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from wiki.conf import settings
-from wiki.core import article_markdown, permissions
+from wiki.core import permissions
 from wiki.core import compat
 from wiki import managers
 from mptt.models import MPTTModel
@@ -29,7 +28,7 @@ class Article(models.Model):
         verbose_name=_(u'deleted'),
         default=False,
     )
-    locked  = models.BooleanField(
+    locked = models.BooleanField(
         verbose_name=_(u'locked'),
         default=False,
     )
@@ -167,7 +166,7 @@ class Article(models.Model):
             content = preview_content
         else:
             content = self.current_revision.content
-        return mark_safe(article_markdown(content, self))
+        return content
     
     def get_cache_key(self):
         return "wiki:article:%d" % (self.current_revision.id if self.current_revision else self.id)
