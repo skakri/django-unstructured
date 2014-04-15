@@ -1,8 +1,10 @@
 Latest Changes
 ==============
-Compiled on: P  apr 14 18:04:43 EEST 2014
+Compiled on: O  apr 15 09:05:29 EEST 2014
 
-    *   4ecb162 - (HEAD, origin/master, origin/HEAD, master) Merge branch 'feature/denormalization'. (2014-04-14 18:03:29 +0300) <Kristaps Karlsons>
+    * 3c6eb77 - (HEAD, master) Signal handlers need kwargs even if unused. Bumping to 0.2.1. (2014-04-15 09:04:27 +0300) <Kristaps Karlsons>
+    * 04e0f6e - (origin/master, origin/HEAD) Changelog++ (2014-04-14 18:05:39 +0300) <Kristaps Karlsons>
+    *   4ecb162 - Merge branch 'feature/denormalization'. (2014-04-14 18:03:29 +0300) <Kristaps Karlsons>
     |\  
     | * 59e212a - (origin/feature/denormalization, feature/denormalization) Removed pdf generation, binary data shouldn't live here. (2014-04-14 18:00:23 +0300) <Kristaps Karlsons>
     | * b76112a - Removed testproject, it's broken. Adjusted requirements. (2014-04-14 17:56:16 +0300) <Kristaps Karlsons>
