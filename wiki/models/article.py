@@ -340,12 +340,12 @@ def _clear_ancestor_cache(article):
         ancestor.article.clear_cache()
 
 
-def on_article_save_clear_cache(instance):
+def on_article_save_clear_cache(instance, **_):
     _clear_ancestor_cache(instance)
 post_save.connect(on_article_save_clear_cache, Article)
 
 
-def on_article_delete_clear_cache(instance):
+def on_article_delete_clear_cache(instance, **_):
     _clear_ancestor_cache(instance)
     instance.clear_cache()
 pre_delete.connect(on_article_delete_clear_cache, Article)

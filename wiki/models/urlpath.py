@@ -273,7 +273,7 @@ class Namespace:
     pass
 
 
-def on_article_delete(instance):
+def on_article_delete(instance, **_):
     # If an article is deleted, then throw out its URLPaths
     # But move all descendants to a lost-and-found node.
     site = Site.objects.get_current()
