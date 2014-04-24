@@ -1,9 +1,11 @@
 Latest Changes
 ==============
-Compiled on: O  apr 15 09:05:29 EEST 2014
+Compiled on: C  apr 24 14:47:05 EEST 2014
 
-    * 3c6eb77 - (HEAD, master) Signal handlers need kwargs even if unused. Bumping to 0.2.1. (2014-04-15 09:04:27 +0300) <Kristaps Karlsons>
-    * 04e0f6e - (origin/master, origin/HEAD) Changelog++ (2014-04-14 18:05:39 +0300) <Kristaps Karlsons>
+    * 5fa5e81 - (HEAD, origin/master, origin/HEAD, master) 0.2.2: Adjusted initial migration to allow custom user model. (2014-04-24 14:45:54 +0300) <Kristaps Karlsons>
+    * 9d83603 - Changelog++ (2014-04-15 09:07:35 +0300) <Kristaps Karlsons>
+    * 3c6eb77 - Signal handlers need kwargs even if unused. Bumping to 0.2.1. (2014-04-15 09:04:27 +0300) <Kristaps Karlsons>
+    * 04e0f6e - Changelog++ (2014-04-14 18:05:39 +0300) <Kristaps Karlsons>
     *   4ecb162 - Merge branch 'feature/denormalization'. (2014-04-14 18:03:29 +0300) <Kristaps Karlsons>
     |\  
     | * 59e212a - (origin/feature/denormalization, feature/denormalization) Removed pdf generation, binary data shouldn't live here. (2014-04-14 18:00:23 +0300) <Kristaps Karlsons>
