@@ -79,7 +79,7 @@ class Migration(SchemaMigration):
             ('locked', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('created', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, blank=True)),
             ('modified', self.gf('django.db.models.fields.DateTimeField')(auto_now=True, blank=True)),
-            ('owner', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='owned_sections', null=True, on_delete=models.SET_NULL, to=orm['auth.User'])),
+            ('owner', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='owned_sections', null=True, on_delete=models.SET_NULL, to=orm[user_orm_label])),
             ('group', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['auth.Group'], null=True, on_delete=models.SET_NULL, blank=True)),
             ('group_read', self.gf('django.db.models.fields.BooleanField')(default=True)),
             ('group_write', self.gf('django.db.models.fields.BooleanField')(default=True)),

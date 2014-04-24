@@ -1,9 +1,9 @@
 Latest Changes
 ==============
-Compiled on: C  apr 24 15:13:58 EEST 2014
+Compiled on: C  apr 24 15:18:03 EEST 2014
 
-    * 727a0df - (HEAD, master) 0.2.3 fixed oversighted auth.user (2014-04-24 15:13:05 +0300) <Kristaps Karlsons>
-    * 36b595e - (tag: release/0.2.3, tag: release/0.2.2, origin/master, origin/HEAD) Changelog++ (2014-04-24 14:48:38 +0300) <Kristaps Karlsons>
+    * e50b4c9 - (HEAD, origin/master, origin/HEAD, master) 0.2.3 fixed oversighted auth.user (2014-04-24 15:14:17 +0300) <Kristaps Karlsons>
+    * 36b595e - (tag: release/0.2.3, tag: release/0.2.2) Changelog++ (2014-04-24 14:48:38 +0300) <Kristaps Karlsons>
     * 5fa5e81 - 0.2.2: Adjusted initial migration to allow custom user model. (2014-04-24 14:45:54 +0300) <Kristaps Karlsons>
     * 9d83603 - Changelog++ (2014-04-15 09:07:35 +0300) <Kristaps Karlsons>
     * 3c6eb77 - Signal handlers need kwargs even if unused. Bumping to 0.2.1. (2014-04-15 09:04:27 +0300) <Kristaps Karlsons>
