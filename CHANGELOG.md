@@ -1,8 +1,10 @@
 Latest Changes
 ==============
-Compiled on: C  apr 24 15:18:03 EEST 2014
+Compiled on: O  mai 13 16:40:06 EEST 2014
 
-    * e50b4c9 - (HEAD, origin/master, origin/HEAD, master) 0.2.3 fixed oversighted auth.user (2014-04-24 15:14:17 +0300) <Kristaps Karlsons>
+    * 6eba26b - (HEAD, master) Modified add_revision methods to implement optional revision switching. 0.2.4 release. (2014-05-13 16:39:58 +0300) <Kristaps Karlsons>
+    * 9f2f09f - (tag: release/0.2.3.1, origin/master, origin/HEAD) 0.2.3.1 because I suck (2014-04-24 15:18:40 +0300) <Kristaps Karlsons>
+    * e50b4c9 - 0.2.3 fixed oversighted auth.user (2014-04-24 15:14:17 +0300) <Kristaps Karlsons>
     * 36b595e - (tag: release/0.2.3, tag: release/0.2.2) Changelog++ (2014-04-24 14:48:38 +0300) <Kristaps Karlsons>
     * 5fa5e81 - 0.2.2: Adjusted initial migration to allow custom user model. (2014-04-24 14:45:54 +0300) <Kristaps Karlsons>
     * 9d83603 - Changelog++ (2014-04-15 09:07:35 +0300) <Kristaps Karlsons>

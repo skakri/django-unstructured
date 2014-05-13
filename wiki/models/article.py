@@ -124,10 +124,10 @@ class Article(models.Model):
                 descendant.article.owner = self.owner
                 descendant.article.save()
     
-    def add_revision(self, new_revision, save=True):
+    def add_revision(self, new_revision, save=True, switch=True):
         """
-        Sets the properties of a revision and ensures its the current
-        revision.
+        Sets the properties of a new revision.
+        If switch is truthy -- sets as current revision.
         """
         assert self.id or save, ('Article.add_revision: Sorry, you cannot add a' 
                                  'revision to an article that has not been saved '
@@ -143,7 +143,8 @@ class Article(models.Model):
         new_revision.previous_revision = self.current_revision
         if save:
             new_revision.save()
-        self.current_revision = new_revision
+        if switch:
+            self.current_revision = new_revision
         if save:
             self.save()
     
