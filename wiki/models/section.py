@@ -77,10 +77,10 @@ class Section(MPTTModel):
     def can_assign(self, user):
         return permissions.can_assign(self, user)
 
-    def add_revision(self, new_revision, save=True):
+    def add_revision(self, new_revision, save=True, switch=True):
         """
-        Sets the properties of a revision and ensures its the current
-        revision.
+        Sets the properties of a new revision.
+        If switch is truthy -- sets as current revision.
         """
         assert self.id or save, ('Section.add_revision: Sorry, you cannot add a'
                                  'revision to an section that has not been saved '
@@ -96,7 +96,8 @@ class Section(MPTTModel):
         new_revision.previous_revision = self.current_revision
         if save:
             new_revision.save()
-        self.current_revision = new_revision
+        if switch:
+            self.current_revision = new_revision
         if save:
             self.save()
 
