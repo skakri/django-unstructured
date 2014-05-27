@@ -1,4 +1,4 @@
-adjango-wiki-base
+django-wiki-base
 ================
 
 Background
