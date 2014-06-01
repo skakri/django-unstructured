@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
-from wiki import VERSION
+from unstructured import VERSION
 from setuptools import setup, find_packages
 
 # Utility function to read the README file.
@@ -28,15 +28,15 @@ except (IOError, ImportError):
     long_description = ""
 
 setup(
-    name = "wiki-base",
+    name = "django-unstructured",
     version = VERSION,
     author = "Kristaps Karlsons",
     author_email = "kristaps.karlsons@gmail.com",
-    url = "http://github.com/skakri/django-wiki-base",
-    description = "A collection of wiki-like Django modules for integration with APIs. Based on wiki package.",
+    url = "http://github.com/skakri/django-unstructured",
+    description = "A collection of abstract Django knowledge-base/wiki-like modules for integration with APIs. Based on wiki package.",
     license = "GPLv3",
-    keywords = "django wiki markdown",
-    packages=find_packages(exclude=["testproject","testproject.*"]),
+    keywords = "django wiki knowledgebase",
+    packages=find_packages(),
     #long_description=long_description,
     zip_safe=False,
     install_requires=read('requirements.txt').split("\n"),

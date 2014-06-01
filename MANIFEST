@@ -3,4 +3,4 @@ include README.md
 include README.rst
 include setup.cfg
 include requirements.txt
-recursive-include wiki *.html *.txt *.png *.js *.css *.gif *.less *.mo *.po *.otf *.svg *.woff *.eot *.ttf
+recursive-include unstructured *.html *.txt *.png *.js *.css *.gif *.less *.mo *.po *.otf *.svg *.woff *.eot *.ttf

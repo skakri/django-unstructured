@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'wiki-base'
+project = u'django-unstructured'
 copyright = u'2014, Kristaps Karlsons'
 
 
@@ -53,7 +53,7 @@ path = os.path.join(
 )[0]
 
 sys.path = [path] + sys.path
-sys.path = [os.path.join(path, 'wiki')] + sys.path
+sys.path = [os.path.join(path, 'unstructured')] + sys.path
 
 import wiki
 
