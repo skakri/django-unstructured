@@ -1,4 +1,4 @@
-from wiki.conf import settings
+from unstructured.conf import settings
 
 ###############################
 # TARGET PERMISSION HANDLING #
@@ -9,7 +9,7 @@ from wiki.conf import settings
 #      => True/False
 #
 # All functions can be replaced by pointing their relevant
-# settings variable in wiki.conf.settings to a callable(target, user)
+# settings variable in unstructured.conf.settings to a callable(target, user)
 
 def can_read(target, user):
     if callable(settings.CAN_READ):
@@ -19,7 +19,7 @@ def can_read(target, user):
         is_deleted = target.current_revision and target.deleted
         if is_deleted and not target.can_delete(user):
             return False
-        
+
         # Check access for other users...
         if user.is_anonymous() and not settings.ANONYMOUS:
             return False
@@ -35,7 +35,7 @@ def can_read(target, user):
         if target.can_moderate(user):
             return True
         return False
-        
+
 def can_write(target, user):
     if callable(settings.CAN_WRITE):
         return settings.CAN_WRITE(target, user)
@@ -58,7 +58,7 @@ def can_write(target, user):
 def can_assign(target, user):
     if callable(settings.CAN_ASSIGN):
         return settings.CAN_ASSIGN(target, user)
-    return not user.is_anonymous() and user.has_perm('wiki.assign')
+    return not user.is_anonymous() and user.has_perm('unstructured.assign')
 
 def can_assign_owner(target, user):
     if callable(settings.CAN_ASSIGN_OWNER):
@@ -71,7 +71,7 @@ def can_change_permissions(target, user):
     return (
         not user.is_anonymous() and (
             target.owner == user or
-            user.has_perm('wiki.assign')
+            user.has_perm('unstructured.assign')
         )
     )
 
@@ -83,10 +83,10 @@ def can_delete(target, user):
 def can_moderate(target, user):
     if callable(settings.CAN_MODERATE):
         return settings.CAN_MODERATE(target, user)
-    return not user.is_anonymous() and user.has_perm('wiki.moderate')
+    return not user.is_anonymous() and user.has_perm('unstructured.moderate')
 
 def can_admin(target, user):
     if callable(settings.CAN_ADMIN):
         return settings.CAN_ADMIN(target, user)
-    return not user.is_anonymous() and user.has_perm('wiki.admin')
+    return not user.is_anonymous() and user.has_perm('unstructured.admin')
 

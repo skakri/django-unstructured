@@ -6,12 +6,12 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from mptt.models import MPTTModel
 
-from wiki.conf import settings
-from wiki.core import permissions
-from wiki.core import compat
-from wiki import managers
-from wiki.models import BaseRevisionMixin
-from wiki.models import Article
+from unstructured.conf import settings
+from unstructured.core import permissions
+from unstructured.core import compat
+from unstructured import managers
+from unstructured.models import BaseRevisionMixin
+from unstructured.models import Article
 
 
 class Section(MPTTModel):
@@ -164,7 +164,7 @@ class Section(MPTTModel):
         return content
 
     def get_cache_key(self):
-        return 'wiki:section:%d' % (
+        return 'unstructured:section:%d' % (
             self.current_revision.id if self.current_revision else self.id
         )
 
