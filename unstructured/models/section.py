@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 from mptt.models import TreeForeignKey
-from django.contrib.auth.models import Group
-from django.core.cache import cache
+from django.contrib.contenttypes.models import ContentType
+from django.contrib.contenttypes import generic
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from mptt.models import MPTTModel
 
+from django.db.models.signals import post_save, pre_delete
 from unstructured.conf import settings
-from unstructured.core import permissions
 from unstructured.core import compat
 from unstructured import managers
-from unstructured.models import BaseRevisionMixin
-from unstructured.models import Article
+from unstructured.models.revision import BaseRevisionMixin
+from django.core.urlresolvers import reverse
 
 
 class Section(MPTTModel):
@@ -23,15 +23,13 @@ class Section(MPTTModel):
         blank=True,
         related_name='children'
     )
-    article = models.OneToOneField(
-        Article,
-        default=None,
-        null=True,
-        related_name='root_node'
-    )
 
-    slug = models.SlugField(verbose_name=_(u'slug'), null=True, blank=True,
-                            max_length=50)
+    slug = models.SlugField(
+        verbose_name=_(u'slug'),
+        null=True,
+        blank=True,
+        max_length=50
+    )
 
     current_revision = models.OneToOneField(
         'SectionRevision',
@@ -39,9 +37,11 @@ class Section(MPTTModel):
         blank=True,
         null=True,
         related_name='current_set',
-        help_text=_(u'The revision being displayed for this section. '
-                    u'If you need to do a roll-back, simply change the '
-                    u'value of this field.'),
+        help_text=_(
+            u'The revision being displayed for this section. '
+            u'If you need to do a roll-back, simply change the '
+            u'value of this field.'
+        ),
     )
 
     latest_revision = models.OneToOneField(
@@ -50,13 +50,16 @@ class Section(MPTTModel):
         blank=True,
         null=True,
         related_name='latest_set',
-        help_text=_(u'Latest revision that has been created.'),
+        help_text=_(
+            u'Latest revision that has been created.'
+        ),
     )
 
     deleted = models.BooleanField(
         verbose_name=_(u'deleted'),
         default=False,
     )
+
     locked = models.BooleanField(
         verbose_name=_(u'locked'),
         default=False,
@@ -81,70 +84,29 @@ class Section(MPTTModel):
         on_delete=models.SET_NULL
     )
 
-    group = models.ForeignKey(
-        Group, verbose_name=_('group'),
-        blank=True,
-        null=True,
-        help_text=_(
-            u'Like in a UNIX file system, '
-            u'permissions can be given to a user according to group '
-            u'membership. '
-            u'Groups are handled through the Django auth system.'
-        ),
-        on_delete=models.SET_NULL)
-
-    group_read = models.BooleanField(
-        default=True,
-        verbose_name=_(u'group read access')
-    )
-    group_write = models.BooleanField(
-        default=True,
-        verbose_name=_(u'group write access')
-    )
-    other_read = models.BooleanField(
-        default=True,
-        verbose_name=_(u'others read access')
-    )
-    other_write = models.BooleanField(
-        default=True,
-        verbose_name=_(u'others write access')
-    )
-
-    def can_read(self, user):
-        return permissions.can_read(self, user)
-
-    def can_write(self, user):
-        return permissions.can_write(self, user)
-
-    def can_delete(self, user):
-        return permissions.can_delete(self, user)
-
-    def can_moderate(self, user):
-        return permissions.can_moderate(self, user)
-
-    def can_assign(self, user):
-        return permissions.can_assign(self, user)
-
     def add_revision(self, new_revision, save=True, switch=True):
         """
         Sets the properties of a new revision.
         If switch is truthy -- sets as current revision.
         """
         assert self.id or save, (
-            'Section.add_revision: Sorry, you cannot add a'
-            'revision to an section that has not been saved '
-            'without using save=True'
+            u'add_revision: Sorry, you cannot add a'
+            u'revision to an section that has not been saved '
+            u'without using save=True'
         )
         if not self.id:
             self.save()
+
         revisions = self.sectionrevision_set.all()
+
         try:
             latest_revision = revisions.latest()
             new_revision.revision_number = latest_revision.revision_number + 1
         except SectionRevision.DoesNotExist:
             new_revision.revision_number = 0
-        new_revision.article = self
+        new_revision.section = self
         new_revision.previous_revision = self.current_revision
+
         if save:
             new_revision.save()
 
@@ -154,31 +116,31 @@ class Section(MPTTModel):
         if save:
             self.save()
 
-    def render(self, preview_content=None):
-        if not self.current_revision:
-            return ""
-        if preview_content:
-            content = preview_content
+
+    def get_absolute_url(self):
+        urlpaths = self.urlpath_set.all()
+        if urlpaths.exists():
+            return urlpaths[0].get_absolute_url()
         else:
-            content = self.current_revision.content
-        return content
+            return reverse('unstructured:get', kwargs={'section_id': self.id})
 
-    def get_cache_key(self):
-        return 'unstructured:section:%d' % (
-            self.current_revision.id if self.current_revision else self.id
+    def add_object_relation(self, obj):
+        content_type = ContentType.objects.get_for_model(obj)
+        is_mptt = isinstance(obj, MPTTModel)
+        rel = SectionForObject.objects.get_or_create(
+            section=self,
+            content_type=content_type,
+            object_id=obj.id,
+            is_mptt=is_mptt
         )
+        return rel
 
-    def get_cached_content(self):
-        """Returns cached """
-        cache_key = self.get_cache_key()
-        cached_content = cache.get(cache_key)
-        if cached_content is None:
-            cached_content = self.render()
-            cache.set(cache_key, cached_content, settings.CACHE_TIMEOUT)
-        return cached_content
-
-    def clear_cache(self):
-        cache.delete(self.get_cache_key())
+    @classmethod
+    def get_for_object(cls, obj):
+        return SectionForObject.objects.get(
+            object_id=obj.id,
+            content_type=ContentType.objects.get_for_model(obj)
+        ).section
 
     def __unicode__(self):
         if self.current_revision:
@@ -193,6 +155,7 @@ class Section(MPTTModel):
 
     class Meta:
         app_label = settings.APP_LABEL
+        abstract = True
         unique_together = ('parent', 'slug')
         permissions = (
             ("moderate", _(u"Can edit all sections and lock/unlock/restore")),
@@ -205,8 +168,6 @@ class SectionRevision(BaseRevisionMixin, models.Model):
     """
     This is where main revision data is stored. To make it easier to
     copy, do NEVER create m2m relationships.
-
-    SectionRevision is directly copied from ArticleRevision.
     """
 
     section = models.ForeignKey('Section', on_delete=models.CASCADE,
@@ -267,6 +228,54 @@ class SectionRevision(BaseRevisionMixin, models.Model):
 
     class Meta:
         app_label = settings.APP_LABEL
+        abstract = True
         get_latest_by = 'revision_number'
         ordering = ('created',)
         unique_together = ('section', 'revision_number')
+
+
+class SectionForObject(models.Model):
+
+    objects = managers.SectionFkManager()
+
+    section = models.ForeignKey('Section', on_delete=models.CASCADE)
+    # Same as django.contrib.comments
+    content_type = models.ForeignKey(
+        ContentType,
+        verbose_name=_('content type'),
+        related_name="content_type_set_for_%(class)s"
+    )
+    object_id = models.PositiveIntegerField(_('object ID'))
+    content_object = generic.GenericForeignKey("content_type", "object_id")
+
+    is_mptt = models.BooleanField(default=False, editable=False)
+
+    class Meta:
+        app_label = settings.APP_LABEL
+        abstract = True
+        verbose_name = _(u'Section for object')
+        verbose_name_plural = _(u'Section for object')
+        # Do not allow several objects
+        unique_together = ('content_type', 'object_id')
+
+
+######################################################
+# SIGNAL HANDLERS
+######################################################
+
+# clear the ancestor cache when saving or deleting sections so things like
+# section_lists will be refreshed
+def _clear_ancestor_cache(section):
+    for ancestor in section.ancestor_objects():
+        ancestor.section.clear_cache()
+
+
+def on_section_save_clear_cache(instance, **_):
+    _clear_ancestor_cache(instance)
+post_save.connect(on_section_save_clear_cache, Section)
+
+
+def on_section_delete_clear_cache(instance, **_):
+    _clear_ancestor_cache(instance)
+    instance.clear_cache()
+pre_delete.connect(on_section_delete_clear_cache, Section)

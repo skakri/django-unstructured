@@ -11,6 +11,7 @@ from unstructured.conf import settings
 # All functions can be replaced by pointing their relevant
 # settings variable in unstructured.conf.settings to a callable(target, user)
 
+
 def can_read(target, user):
     if callable(settings.CAN_READ):
         return settings.CAN_READ(target, user)
@@ -26,7 +27,7 @@ def can_read(target, user):
         elif target.other_read:
             return True
         elif user.is_anonymous():
-            return  False
+            return False
         if user == target.owner:
             return True
         if target.group_read:
@@ -35,6 +36,7 @@ def can_read(target, user):
         if target.can_moderate(user):
             return True
         return False
+
 
 def can_write(target, user):
     if callable(settings.CAN_WRITE):
@@ -45,25 +47,29 @@ def can_write(target, user):
     elif target.other_write:
         return True
     elif user.is_anonymous():
-        return  False
+        return False
     if user == target.owner:
         return True
-    if target.group_write:
-        if target.group and user and user.groups.filter(id=target.group.id).exists():
-            return True
+    if target.group_write and target.group and user and user.groups.filter(
+        id=target.group.id
+    ).exists():
+        return True
     if target.can_moderate(user):
         return True
     return False
+
 
 def can_assign(target, user):
     if callable(settings.CAN_ASSIGN):
         return settings.CAN_ASSIGN(target, user)
     return not user.is_anonymous() and user.has_perm('unstructured.assign')
 
+
 def can_assign_owner(target, user):
     if callable(settings.CAN_ASSIGN_OWNER):
         return settings.CAN_ASSIGN_OWNER(target, user)
     return False
+
 
 def can_change_permissions(target, user):
     if callable(settings.CAN_CHANGE_PERMISSIONS):
@@ -75,18 +81,20 @@ def can_change_permissions(target, user):
         )
     )
 
+
 def can_delete(target, user):
     if callable(settings.CAN_DELETE):
         return settings.CAN_DELETE(target, user)
     return not user.is_anonymous() and target.can_write(user)
+
 
 def can_moderate(target, user):
     if callable(settings.CAN_MODERATE):
         return settings.CAN_MODERATE(target, user)
     return not user.is_anonymous() and user.has_perm('unstructured.moderate')
 
+
 def can_admin(target, user):
     if callable(settings.CAN_ADMIN):
         return settings.CAN_ADMIN(target, user)
     return not user.is_anonymous() and user.has_perm('unstructured.admin')
-
