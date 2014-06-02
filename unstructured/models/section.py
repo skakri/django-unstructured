@@ -15,6 +15,9 @@ from django.core.urlresolvers import reverse
 
 
 class Section(MPTTModel):
+    # Override-able settings.
+    revision_model = 'SectionRevision'
+
     objects = managers.PermissionManager()
 
     parent = TreeForeignKey(
@@ -32,7 +35,7 @@ class Section(MPTTModel):
     )
 
     current_revision = models.OneToOneField(
-        'SectionRevision',
+        revision_model,
         verbose_name=_(u'current revision'),
         blank=True,
         null=True,
@@ -45,7 +48,7 @@ class Section(MPTTModel):
     )
 
     latest_revision = models.OneToOneField(
-        'SectionRevision',
+        revision_model,
         verbose_name=_(u'latest revision'),
         blank=True,
         null=True,
@@ -102,7 +105,7 @@ class Section(MPTTModel):
         try:
             latest_revision = revisions.latest()
             new_revision.revision_number = latest_revision.revision_number + 1
-        except SectionRevision.DoesNotExist:
+        except:
             new_revision.revision_number = 0
         new_revision.section = self
         new_revision.previous_revision = self.current_revision
@@ -115,7 +118,6 @@ class Section(MPTTModel):
             self.current_revision = new_revision
         if save:
             self.save()
-
 
     def get_absolute_url(self):
         urlpaths = self.urlpath_set.all()
@@ -170,8 +172,10 @@ class SectionRevision(BaseRevisionMixin, models.Model):
     copy, do NEVER create m2m relationships.
     """
 
-    section = models.ForeignKey('Section', on_delete=models.CASCADE,
-                                verbose_name=_(u'section'))
+    section = models.ForeignKey(
+        'Section', on_delete=models.CASCADE,
+        verbose_name=_(u'section')
+    )
 
     # This is where the content goes, with whatever markup language is used
     content = models.TextField(blank=True, verbose_name=_(u'section contents'))
@@ -215,7 +219,7 @@ class SectionRevision(BaseRevisionMixin, models.Model):
             try:
                 previous_revision = self.section.sectionrevision_set.latest()
                 self.revision_number = previous_revision.revision_number + 1
-            except SectionRevision.DoesNotExist:
+            except:
                 self.revision_number = 1
 
         super(SectionRevision, self).save(*args, **kwargs)
@@ -235,7 +239,6 @@ class SectionRevision(BaseRevisionMixin, models.Model):
 
 
 class SectionForObject(models.Model):
-
     objects = managers.SectionFkManager()
 
     section = models.ForeignKey('Section', on_delete=models.CASCADE)
