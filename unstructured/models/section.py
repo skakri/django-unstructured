@@ -14,9 +14,39 @@ from unstructured.models.revision import BaseRevisionMixin
 from django.core.urlresolvers import reverse
 
 
+class SectionForObject(models.Model):
+    # Override-able settings.
+    section_model = 'Section'
+
+    objects = managers.SectionFkManager()
+
+    section = models.ForeignKey(
+        section_model,
+        on_delete=models.CASCADE)
+    # Same as django.contrib.comments
+    content_type = models.ForeignKey(
+        ContentType,
+        verbose_name=_('content type'),
+        related_name="content_type_set_for_%(class)s"
+    )
+    object_id = models.PositiveIntegerField(_('object ID'))
+    content_object = generic.GenericForeignKey("content_type", "object_id")
+
+    is_mptt = models.BooleanField(default=False, editable=False)
+
+    class Meta:
+        app_label = settings.APP_LABEL
+        abstract = True
+        verbose_name = _(u'Section for object')
+        verbose_name_plural = _(u'Section for object')
+        # Do not allow several objects
+        unique_together = ('content_type', 'object_id')
+
+
 class Section(MPTTModel):
     # Override-able settings.
     revision_model = 'SectionRevision'
+    section_for_object_cls = SectionForObject
 
     objects = managers.PermissionManager()
 
@@ -129,7 +159,7 @@ class Section(MPTTModel):
     def add_object_relation(self, obj):
         content_type = ContentType.objects.get_for_model(obj)
         is_mptt = isinstance(obj, MPTTModel)
-        rel = SectionForObject.objects.get_or_create(
+        rel = self.section_for_object_cls.objects.get_or_create(
             section=self,
             content_type=content_type,
             object_id=obj.id,
@@ -139,7 +169,7 @@ class Section(MPTTModel):
 
     @classmethod
     def get_for_object(cls, obj):
-        return SectionForObject.objects.get(
+        return cls.section_for_object_cls.objects.get(
             object_id=obj.id,
             content_type=ContentType.objects.get_for_model(obj)
         ).section
@@ -171,9 +201,12 @@ class SectionRevision(BaseRevisionMixin, models.Model):
     This is where main revision data is stored. To make it easier to
     copy, do NEVER create m2m relationships.
     """
+    # Override-able settings.
+    section_model = 'Section'
 
     section = models.ForeignKey(
-        'Section', on_delete=models.CASCADE,
+        section_model,
+        on_delete=models.CASCADE,
         verbose_name=_(u'section')
     )
 
@@ -236,30 +269,6 @@ class SectionRevision(BaseRevisionMixin, models.Model):
         get_latest_by = 'revision_number'
         ordering = ('created',)
         unique_together = ('section', 'revision_number')
-
-
-class SectionForObject(models.Model):
-    objects = managers.SectionFkManager()
-
-    section = models.ForeignKey('Section', on_delete=models.CASCADE)
-    # Same as django.contrib.comments
-    content_type = models.ForeignKey(
-        ContentType,
-        verbose_name=_('content type'),
-        related_name="content_type_set_for_%(class)s"
-    )
-    object_id = models.PositiveIntegerField(_('object ID'))
-    content_object = generic.GenericForeignKey("content_type", "object_id")
-
-    is_mptt = models.BooleanField(default=False, editable=False)
-
-    class Meta:
-        app_label = settings.APP_LABEL
-        abstract = True
-        verbose_name = _(u'Section for object')
-        verbose_name_plural = _(u'Section for object')
-        # Do not allow several objects
-        unique_together = ('content_type', 'object_id')
 
 
 ######################################################

@@ -35,13 +35,18 @@ class URLPath(MPTTModel):
     # Tells django-unstructured that permissions from a this object's section
     # should be inherited to children's sections. In this case, it's a static
     # property.. but you can also use a BooleanField.
+    section_model = 'Section'
+    section_for_object_model = 'SectionForObject'
+    section_cls = Section
+    sectionrevision_cls = SectionRevision
+
     INHERIT_PERMISSIONS = True
 
     objects = managers.URLPathManager()
     _default_manager = objects
 
     sections = generic.GenericRelation(
-        SectionForObject,
+        section_for_object_model,
         content_type_field='content_type',
         object_id_field='object_id',
     )
@@ -49,7 +54,7 @@ class URLPath(MPTTModel):
     # Do NOT modify this field - it is updated with signals whenever
     # SectionForObject is changed.
     section = models.ForeignKey(
-        Section,
+        section_model,
         on_delete=models.CASCADE,
         editable=False,
         verbose_name=_(u'Cache lookup value for sections'),
@@ -184,6 +189,7 @@ class URLPath(MPTTModel):
         super(URLPath, self).delete(*args, **kwargs)
 
     class Meta:
+        abstract = True
         verbose_name = _(u'URL path')
         verbose_name_plural = _(u'URL paths')
         unique_together = ('site', 'parent', 'slug')
@@ -255,8 +261,8 @@ class URLPath(MPTTModel):
         root_nodes = cls.objects.root_nodes().filter(site=site)
         if not root_nodes:
             # (get_or_create does not work for MPTT models??)
-            section = Section()
-            revision = SectionRevision(title=title, **kwargs)
+            section = cls.section_cls()
+            revision = cls.sectionrevision_cls(title=title, **kwargs)
             if request:
                 revision.set_from_request(request)
             section.add_revision(revision, save=True)
@@ -285,9 +291,9 @@ class URLPath(MPTTModel):
 
         if not site:
             site = Site.objects.get_current()
-        section = Section(**section_kwargs)
+        section = cls.section_cls(**section_kwargs)
         section.add_revision(
-            SectionRevision(title=title, **kwargs),
+            cls.sectionrevision_cls(title=title, **kwargs),
             save=True
         )
         section.save()
