@@ -327,7 +327,11 @@ def on_section_relation_save(**kwargs):
             section=instance.section
         )
 
-post_save.connect(on_section_relation_save, SectionForObject)
+post_save.connect(
+    on_section_relation_save,
+    SectionForObject,
+    'unstructured.models.URLPath.section.relation.save'
+)
 
 
 class Namespace:
@@ -396,4 +400,8 @@ def on_section_delete(instance, **_):
             child.move_to(get_lost_and_found())
         # ...and finally delete the path itself
 
-pre_delete.connect(on_section_delete, Section)
+pre_delete.connect(
+    on_section_delete,
+    Section,
+    'unstructured.models.URLPath.section.relation.delete'
+)

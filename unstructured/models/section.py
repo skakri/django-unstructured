@@ -27,10 +27,10 @@ class SectionForObject(models.Model):
     content_type = models.ForeignKey(
         ContentType,
         verbose_name=_('content type'),
-        related_name="content_type_set_for_%(class)s"
+        related_name='content_type_set_for_%(class)s'
     )
     object_id = models.PositiveIntegerField(_('object ID'))
-    content_object = generic.GenericForeignKey("content_type", "object_id")
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
 
     is_mptt = models.BooleanField(default=False, editable=False)
 
@@ -177,7 +177,9 @@ class Section(MPTTModel):
     def __unicode__(self):
         if self.current_revision:
             return self.current_revision.title
-        obj_name = _(u'Section without content (%(id)d)') % {'id': self.id}
+        obj_name = _(u'Section without content (%(id)d)') % {
+            'id': self.id or 0
+        }
         return unicode(obj_name)
 
     class MPTTMeta:
@@ -190,9 +192,9 @@ class Section(MPTTModel):
         abstract = True
         unique_together = ('parent', 'slug')
         permissions = (
-            ("moderate", _(u"Can edit all sections and lock/unlock/restore")),
-            ("assign", _(u"Can change ownership of any section")),
-            ("grant", _(u"Can assign permissions to other users")),
+            ('moderate', _(u'Can edit all sections and lock/unlock/restore')),
+            ('assign', _(u'Can change ownership of any section')),
+            ('grant', _(u'Can assign permissions to other users')),
         )
 
 
@@ -227,7 +229,9 @@ class SectionRevision(BaseRevisionMixin, models.Model):
     )
 
     def __unicode__(self):
-        return "%s (%d)" % (self.title, self.revision_number)
+        return 'SectionRevision: %s (%d)' % (
+            self.title, self.revision_number or 0
+        )
 
     def inherit_predecessor(self, section):
         """
@@ -247,6 +251,8 @@ class SectionRevision(BaseRevisionMixin, models.Model):
                 and self.section.current_revision != self):
 
             self.previous_revision = self.section.current_revision
+
+        self.section.latest_revision = self
 
         if not self.revision_number:
             try:
@@ -284,10 +290,18 @@ def _clear_ancestor_cache(section):
 
 def on_section_save_clear_cache(instance, **_):
     _clear_ancestor_cache(instance)
-post_save.connect(on_section_save_clear_cache, Section)
+post_save.connect(
+    on_section_save_clear_cache,
+    Section,
+    'unstructured.models.Section.save'
+)
 
 
 def on_section_delete_clear_cache(instance, **_):
     _clear_ancestor_cache(instance)
     instance.clear_cache()
-pre_delete.connect(on_section_delete_clear_cache, Section)
+pre_delete.connect(
+    on_section_delete_clear_cache,
+    Section,
+    'unstructured.models.Section.delete'
+)
