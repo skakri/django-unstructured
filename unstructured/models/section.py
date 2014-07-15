@@ -5,6 +5,7 @@ from django.contrib.contenttypes import generic
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from mptt.models import MPTTModel
+from mptt.managers import TreeManager
 
 from django.db.models.signals import post_save, pre_delete
 from unstructured.conf import settings
@@ -48,7 +49,7 @@ class Section(MPTTModel):
     revision_model = 'SectionRevision'
     section_for_object_cls = SectionForObject
 
-    objects = managers.PermissionManager()
+    objects = TreeManager()
 
     parent = TreeForeignKey(
         'self',
@@ -148,13 +149,6 @@ class Section(MPTTModel):
             self.current_revision = new_revision
         if save:
             self.save()
-
-    def get_absolute_url(self):
-        urlpaths = self.urlpath_set.all()
-        if urlpaths.exists():
-            return urlpaths[0].get_absolute_url()
-        else:
-            return reverse('unstructured:get', kwargs={'section_id': self.id})
 
     def add_object_relation(self, obj):
         content_type = ContentType.objects.get_for_model(obj)

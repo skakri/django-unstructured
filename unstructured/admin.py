@@ -1,9 +1,7 @@
 from django.contrib import admin
 from django.contrib.contenttypes.generic import GenericTabularInline
-from mptt.admin import MPTTModelAdmin
 from django import forms
 from models.section import *
-from models.urlpath import URLPath
 
 
 class SectionObjectAdmin(GenericTabularInline):
@@ -54,16 +52,5 @@ class SectionAdmin(admin.ModelAdmin):
     form = SectionForm
 
 
-class URLPathAdmin(MPTTModelAdmin):
-    inlines = [SectionObjectAdmin]
-    list_filter = ('site', 'articles__article__deleted',
-                   'articles__article__created',
-                   'articles__article__modified')
-    list_display = ('__unicode__', 'article', 'get_created')
-
-    def get_created(self, instance):
-        return instance.article.created
-    
-admin.site.register(URLPath, URLPathAdmin)
 admin.site.register(Section, SectionAdmin)
 admin.site.register(SectionRevision, SectionRevisionAdmin)

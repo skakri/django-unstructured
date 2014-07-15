@@ -11,16 +11,6 @@ URL_CASE_SENSITIVE = getattr(
 # Non-configurable (at the moment)
 APP_LABEL = 'unstructured'
 
-
-# This slug is used in URLPath if an article has been deleted.
-# The children of the URLPath of that article are moved to lost and found.
-# They keep their permissions and all their content.
-LOST_AND_FOUND_SLUG = getattr(
-    django_settings,
-    'UNSTRUCTURED_LOST_AND_FOUND_SLUG',
-    'lost-and-found'
-)
-
 # Do we want to log IPs?
 LOG_IPS_ANONYMOUS = getattr(
     django_settings,
