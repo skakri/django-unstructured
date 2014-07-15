@@ -10,16 +10,12 @@ from mptt.managers import TreeManager
 from django.db.models.signals import post_save, pre_delete
 from unstructured.conf import settings
 from unstructured.core import compat
-from unstructured import managers
 from unstructured.models.revision import BaseRevisionMixin
-from django.core.urlresolvers import reverse
 
 
 class SectionForObject(models.Model):
     # Override-able settings.
     section_model = 'Section'
-
-    objects = managers.SectionFkManager()
 
     section = models.ForeignKey(
         section_model,
@@ -185,11 +181,6 @@ class Section(MPTTModel):
         app_label = settings.APP_LABEL
         abstract = True
         unique_together = ('parent', 'slug')
-        permissions = (
-            ('moderate', _(u'Can edit all sections and lock/unlock/restore')),
-            ('assign', _(u'Can change ownership of any section')),
-            ('grant', _(u'Can assign permissions to other users')),
-        )
 
 
 class SectionRevision(BaseRevisionMixin, models.Model):

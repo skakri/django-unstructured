@@ -43,7 +43,8 @@ class SectionForm(forms.ModelForm):
             revisions = SectionRevision.objects.filter(article=self.instance)
             self.fields['current_revision'].queryset = revisions
         else:
-            self.fields['current_revision'].queryset = SectionRevision.objects.get_empty_query_set()
+            self.fields['current_revision'].queryset = \
+                SectionRevision.objects.get_empty_query_set()
             self.fields['current_revision'].widget = forms.HiddenInput()
 
 
